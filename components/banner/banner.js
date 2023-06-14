@@ -12,8 +12,9 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from 'next/image';
 
 const banner = () => {
+    
     return (
-        <>
+        <> 
         <div className='mx-4 mt-4'>
             <Swiper
                 spaceBetween={30}
