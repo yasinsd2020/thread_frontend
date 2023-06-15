@@ -4,10 +4,12 @@ import CategoryCards from "../../../components/category/categoryCards";
 
 export default function LandingPage() {
   return (
-    <div >
-        <Header/>
-        <Banner/>
-        <CategoryCards/>
-     </div>
-  )
+    <div>
+      <Header />
+      <div className="relative">
+        <Banner />
+        <CategoryCards />
+      </div>
+    </div>
+  );
 }
