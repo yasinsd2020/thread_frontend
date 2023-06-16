@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import Image from 'next/image';
 
 const banner = () => {
@@ -26,19 +26,19 @@ const banner = () => {
                 pagination={{
                     clickable: true,
                 }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
+                navigation={false}
+                modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide><div className='h-[75vh] w-full relative '><Image src={'/banner2.jpg'} layout='fill'
+                <SwiperSlide><div className=' h-[45vh]  lg:h-[75vh] w-full relative '><Image src={'/banner2.jpg'} layout='fill'
                 className='relative object-cover'
 
                 /></div></SwiperSlide>
-                <SwiperSlide><div className='h-[75vh] w-full relative '><Image src={'/caro1.jpg'} layout='fill'
+                <SwiperSlide><div className='  h-[45vh]  lg:h-[75vh] w-full relative '><Image src={'/mainBanner.jpg'} layout='fill'
                 className='relative object-cover'
 
                 /></div></SwiperSlide>
-                <SwiperSlide><div className='h-[75vh] w-full relative '><Image src={'/caro2.jpg'} layout='fill'
+                <SwiperSlide><div className='  h-[45vh]  lg:h-[75vh] w-full relative '><Image src={'/mainBanner.jpg'} layout='fill'
                 className='relative object-cover'
 
                 /></div></SwiperSlide>
