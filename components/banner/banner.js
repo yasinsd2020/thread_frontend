@@ -14,6 +14,20 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 import Image from "next/image";
 
 const banner = () => {
+  const sliders = [
+    {
+      image: Img1,
+    },
+    {
+      image: Img2,
+    },
+    {
+      image: Img3,
+    },
+    {
+      image: Img4,
+    },
+  ];
   return (
     <>
       <div className="swiper-landing">
@@ -31,42 +45,24 @@ const banner = () => {
           modules={[Autoplay]}
           className="mySwiper h-[80vh]"
         >
-          <SwiperSlide>
-            <div className="h-full w-full relative ">
-              <Image
-                src={Img1}
-                layout="fill"
-                className="relative object-cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="h-full w-full relative ">
-              <Image
-                src={Img2}
-                layout="fill"
-                className="relative object-cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="h-full w-full relative ">
-              <Image
-                src={Img3}
-                layout="fill"
-                className="relative object-cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="h-full w-full relative ">
-              <Image
-                src={Img4}
-                layout="fill"
-                className="relative object-cover"
-              />
-            </div>
-          </SwiperSlide>
+          {sliders.map((slider,idx) => {
+            return (
+              <SwiperSlide key={idx}>
+                <div className="h-full w-full relative ">
+                  <Image
+                    src={slider.image}
+                    layout="fill"
+                    className="relative object-cover"
+                  />
+                  <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[-50%]">
+                    <article className="font-diot text-[40px] text-white uppercase">
+                      {slider.headline}
+                    </article>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </>
