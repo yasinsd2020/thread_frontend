@@ -1,50 +1,69 @@
-import React from 'react'
-import DiscountHeader from './discountHeader'
-import { TfiSearch } from 'react-icons/tfi';
+"use client";
+
+import React, { useState } from "react";
+import DiscountHeader from "./discountHeader";
+import { TfiSearch } from "react-icons/tfi";
 import { GiShoppingCart } from "react-icons/gi";
-import HeaderNav from './headerNav';
+import { AiOutlineUser } from "react-icons/ai";
+import { RiMenu2Fill } from "react-icons/ri";
+import { CiHeart, CiSearch } from "react-icons/ci";
+import CategoryList from "./categoryList";
+import SearchBar from "./searchBar";
+import SideBar from "./sideBar";
+
 const Header = () => {
+  const [openSearch,setOpenSearch] = useState(false)
+  const [openBar,setOpenBar] = useState(false)
   return (
     <>
-      <DiscountHeader />
-      <div className='mx-4 mt-2 lg:mt-4'>
-        {/* logo and search  */}
-        <div className='flex justify-between items-center  '>
+      {/* search bar */}
+      <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} />
+      {/* side bar */}
+      <SideBar openBar={openBar} setOpenBar={setOpenBar} />
+      {/* header */}
+      <div className="absolute top-0 left-0 w-full" style={{ zIndex: 100 }}>
+        <div className="relative px-4 py-6 flex justify-between items-center">
+          {/* left section */}
+          <div className="flex jusitfy-start items-center gap-5 text-white">
+            <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenBar(true)}}>
+              <RiMenu2Fill className="text-[25px]" />
+            </div>
+          </div>
+          {/* middel section */}
+          <div className="md:absolute relative md:left-[50%]    md:-translate-x-[50%]">
+            <div className="md:text-xl text-sm font-diot font-bold cursor-pointer text-white">
+              THREAD & TREADS
+            </div>
+          </div>
+          {/* right section */}
+          <div className=" flex justify-between items-center py-2 px-4 ">
+            <div className="flex jusitfy-center items-center text-white gap-4">
+              <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenSearch(true)}}>
+                <CiSearch className="text-2xl" />
+              </div>
+              {/*  */}
+              <div className="flex justify-center items-center cursor-pointer 	">
+                <CiHeart className="text-2xl" />
+              </div>
+              {/*  */}
+              <div className="flex justify-center items-center cursor-pointer 	">
+                <GiShoppingCart className="text-2xl" />
+              </div>
+              {/*  */}
+              <div className="flex justify-center items-center cursor-pointer">
+                <AiOutlineUser className="text-2xl" />
+              </div>
 
-          <div className='w-[70%] lg:w-[30%] mb-2 lg:mb-0'>
-            <div className='text-lg lg:text-xl font-bold cursor-pointer'>THREAD & TREADS</div>
-          </div>
-          <div className='flex  w-[20%] justify-end  '>
-            <div className=' flex items-center'>
-              <div>
-                <TfiSearch className='text-xl' />
-              </div>
-              <div className='cursor-pointer font-normal	'>
-                Search
-              </div>
-            </div>
-            <div className='mx-3'>
-              <div className='cursor-pointer font-normal	'>
-                Accounts
-              </div>
-            </div>
-            <div className='flex  items-center font-semibold	'>
-              <div>
-                <GiShoppingCart className='text-2xl' />
-              </div>
-              <div className='cursor-pointer font-normal	'>
-                Carts
-              </div>
             </div>
           </div>
-        </div>
-        {/* category section */}
-        <div>
-          <HeaderNav />
+          {/* category section */}
+          {/* <div className="py-2">
+          <CategoryList />
+        </div> */}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -10,6 +10,9 @@ module.exports = {
 
   ],
   theme: {
+    fontFamily :{
+      diot : "'GFS Didot', serif",
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

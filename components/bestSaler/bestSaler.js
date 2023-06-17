@@ -74,7 +74,7 @@ const bestSaler = () => {
   return (
     <>
     
-    <div className='text-center m-8 text-2xl uppercase font-normal'>best Saler</div>
+    <div className='text-center m-8 text-2xl uppercase font-normal font-diot'>best Seller</div>
 
     <div className='m-4'>
     <AllPageCrousel data={data} />
