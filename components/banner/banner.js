@@ -43,7 +43,7 @@ const banner = () => {
           }}
           navigation={false}
           modules={[Autoplay]}
-          className="mySwiper h-[80vh]"
+          className="mySwiper h-[85vh]"
         >
           {sliders.map((slider,idx) => {
             return (

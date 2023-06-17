@@ -6,6 +6,7 @@ import { TfiSearch } from "react-icons/tfi";
 import { GiShoppingCart } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiMenu2Fill } from "react-icons/ri";
+import { CiHeart, CiSearch } from "react-icons/ci";
 import CategoryList from "./categoryList";
 import SearchBar from "./searchBar";
 import SideBar from "./sideBar";
@@ -36,9 +37,13 @@ const Header = () => {
           </div>
           {/* right section */}
           <div className=" flex justify-between items-center py-2 px-4 ">
-            <div className="flex jusitfy-center items-center text-white gap-5">
+            <div className="flex jusitfy-center items-center text-white gap-4">
               <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenSearch(true)}}>
-                <TfiSearch className="text-xl" />
+                <CiSearch className="text-2xl" />
+              </div>
+              {/*  */}
+              <div className="flex justify-center items-center cursor-pointer 	">
+                <CiHeart className="text-2xl" />
               </div>
               {/*  */}
               <div className="flex justify-center items-center cursor-pointer 	">
@@ -48,6 +53,7 @@ const Header = () => {
               <div className="flex justify-center items-center cursor-pointer">
                 <AiOutlineUser className="text-2xl" />
               </div>
+
             </div>
           </div>
           {/* category section */}
