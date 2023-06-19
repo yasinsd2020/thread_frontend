@@ -17,6 +17,7 @@ const footer = () => {
                             </div>
                         </div>
                         <div className='lg:w-[20%]  '>
+                            
                             <div className='text-white lg:text-center pl-2 lg:pl-0 font-semibold'>Socials Account</div>
                             <div className='flex lg:justify-center pt-[.8rem] lg:pt-[1.5rem]'>
                                 <div className='flex lg:w-[80%] w-[40%] lg:justify-center'>
