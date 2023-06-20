@@ -8,8 +8,8 @@ const footer = () => {
                 <div>
                     <div className='flex justify-between  flex-col lg:flex-row  w-full'>
                         <div className='flex flex-col w-[80%]'>
-                            <div className='text-white uppercase text-lg lg:text-xl font-bold cursor-pointer'>thread & treads</div>
-                            <div className='flex pl-[3%] items-center mt-[2%] gap-1'>
+                            <div className='text-white uppercase text-lg lg:text-xl font-bold cursor-pointer font-diot'>thread & treads</div>
+                            <div className='flex items-center mt-[2%] gap-1'>
                                 <div className='text-white text-xs font-light '>
                                     We&#x2019;re available by phone:
                                 </div>
@@ -18,7 +18,7 @@ const footer = () => {
                         </div>
                         <div className='lg:w-[20%]  '>
                             
-                            <div className='text-white lg:text-center pl-2 lg:pl-0 font-semibold'>Socials Account</div>
+                            <div className='text-white lg:text-center  lg:pl-0 font-semibold'>Socials Account</div>
                             <div className='flex lg:justify-center pt-[.8rem] lg:pt-[1.5rem]'>
                                 <div className='flex lg:w-[80%] w-[40%] lg:justify-center'>
                                     <div className='relative w-full h-[4vh] ' >
