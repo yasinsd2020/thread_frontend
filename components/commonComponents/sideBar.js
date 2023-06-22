@@ -1,47 +1,50 @@
 import React from "react";
 import { TfiSearch, TfiClose } from "react-icons/tfi";
 import { CiInstagram, CiFacebook, CiTwitter, CiYoutube } from "react-icons/ci";
-
+const links = [
+  {
+    name: "T-shirts & Polos",
+    href: "/",
+  },
+  {
+    name: "Shirts",
+    href: "/",
+  },
+  {
+    name: "Hoodies & Sweatshirts",
+    href: "/",
+  },
+  {
+    name: "Sweaters & Cardigans",
+    href: "/",
+  },
+  {
+    name: "Jackets & Coats",
+    href: "/",
+  },
+  {
+    name: "Pants",
+    href: "/",
+  },
+  {
+    name: "Suits & Blazers",
+    href: "/",
+  },
+  {
+    name: "Activewear",
+    href: "/",
+  },
+  {
+    name: "Swimwear",
+    href: "/",
+  },
+];
 const SideBar = ({ openBar, setOpenBar }) => {
-  const links = [
-    {
-      name: "T-shirts & Polos",
-      href: "/",
-    },
-    {
-      name: "Shirts",
-      href: "/",
-    },
-    {
-      name: "Hoodies & Sweatshirts",
-      href: "/",
-    },
-    {
-      name: "Sweaters & Cardigans",
-      href: "/",
-    },
-    {
-      name: "Jackets & Coats",
-      href: "/",
-    },
-    {
-      name: "Pants",
-      href: "/",
-    },
-    {
-      name: "Suits & Blazers",
-      href: "/",
-    },
-    {
-      name: "Activewear",
-      href: "/",
-    },
-    {
-      name: "Swimwear",
-      href: "/",
-    },
-  ];
+
+
+
   return (
+
     <div
       className={`fixed ${
         openBar ? "left-[0]" : "-left-[100%]"
