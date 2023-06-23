@@ -34,7 +34,7 @@ const footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex my-[2%] pl-[2.5%]  flex-col lg:flex-row  justify-between w-full'>
+                    <div className='flex my-[2%] pl-[2.5%]  flex-col lg:flex-row  '>
                         <div className='grid grid-cols-2 lg:grid-cols-3 md:grid-cols-3 gap-2 my-4 lg:w-[40%]'>
                             <div className='text-white  lg:text-sm text-xs font-light'>About</div>
                             <div className='text-white  lg:text-sm text-xs font-light'>Terms & Condition</div>
@@ -61,7 +61,7 @@ const footer = () => {
                         </div>
                     </div>
                     <div>
-                        <div className='text-white text-xs mt-[3rem]'>©️ 2023 THREADS & TREADS | All Rights Reserved |</div>
+                        <div className='text-white lg:text-end text-xs mt-[3rem]'>©️ 2023 THREADS & TREADS | All Rights Reserved |</div>
                     </div>
                 </div>
             </div>
