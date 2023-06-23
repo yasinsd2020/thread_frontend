@@ -44,7 +44,7 @@ const LeftSection = () => {
         </div>
       </div>
       {/* product list section  */}
-      <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hiddenScroll py-4 ">
+      <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
         {
             InCart?.map((cartPrd,idx) => {
                 return (
@@ -53,6 +53,8 @@ const LeftSection = () => {
             })
         }
       </div>
+      {/* Subtotal */}
+      <div className="md:hidden w-full flex justify-end items-center py-4 text-xl text-gray-500">SUBTOTAL : ₹549.00</div>
     </div>
   );
 };

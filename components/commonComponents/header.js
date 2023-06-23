@@ -52,13 +52,17 @@ const Header = () => {
                 <CiSearch className="text-2xl" />
               </div>
               {/*  */}
+              <a href="/whishlist">
               <div className="flex justify-center items-center cursor-pointer 	">
                 <CiHeart className="text-2xl" />
               </div>
+              </a>
               {/*  */}
+              <a href="/cart">
               <div className="flex justify-center items-center cursor-pointer 	">
                 <CiShoppingCart className="text-2xl" />
               </div>
+              </a>
               {/*  */}
               <div className="flex justify-center items-center cursor-pointer">
                 <CiUser className="text-2xl" />

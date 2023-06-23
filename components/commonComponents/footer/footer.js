@@ -20,45 +20,13 @@ const footer = () => {
       herf: "/",
     },
     {
-      name: "Refund Policy",
-      herf: "/",
-    },
-    {
-      name: "Other",
-      herf: "/",
-    },
-    {
-      name: "Services",
-      herf: "/",
-    },
-    {
-      name: "About",
-      herf: "/",
-    },
-    {
-      name: "Terms & Condition",
-      herf: "/",
-    },
-    {
-      name: "F&Q",
-      herf: "/",
-    },
-    {
-      name: "Contact Us",
-      herf: "/",
-    },
-    {
-      name: "Refund Policy",
-      herf: "/",
-    },
-    {
-      name: "Other",
-      herf: "/",
-    },
-    {
-      name: "Services",
-      herf: "/",
-    },
+        name: "Policy",
+        herf: "/",
+      },
+      {
+          name: "Others",
+          herf: "/",
+        }
   ];
   return (
     <>
@@ -72,7 +40,7 @@ const footer = () => {
               thread & treads
             </article>
             {/*  */}
-            <div className="flex flex-wrap flex-col w-full gap-2 max-h-[150px]">
+            <div className="flex flex-wrap flex-col w-[200px] gap-2 max-h-[100px]">
               {qLinks.map((link, idx) => {
                 return (
                   <a

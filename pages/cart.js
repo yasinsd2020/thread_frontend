@@ -6,7 +6,7 @@ import RightSection from '../components/cart/rightSection'
 const Cart = () => {
   return (
     <div className='py-10 px-5'>
-      <div className='flex md:flex-row flex-col w-full px-4 h-auto md:gap-10 gap-5'>
+      <div className='flex md:flex-row flex-col w-full px-4 h-auto md:gap-10 gap-2'>
         {/* Left Section */}
         <div className='md:flex-[65] w-full h-full'>
           <LeftSection />
