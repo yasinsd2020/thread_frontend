@@ -12,7 +12,7 @@ import SideBar from "./sideBar";
 const Header = () => {
   const [openSearch,setOpenSearch] = useState(false)
   const [openBar,setOpenBar] = useState(false)
-  const [postion,setPosition] = useState('absolute')
+  const [postion,setPosition] = useState('relative')
   const router = useRouter()
 
   useEffect(() => {
@@ -23,6 +23,24 @@ const Header = () => {
     }
   },[router])
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 80){
+        if(router.pathname === "/searchPage" && router.pathname === "/account"){
+          setPosition('relative')
+        }else{
+          setPosition('fixed')
+        }
+      }else{
+        if(router.pathname === "/"){
+          return setPosition('absolute')
+        }else{
+          return setPosition('relative')
+        }
+      }
+    })
+  },[])
+
 
   return (
     <>
@@ -31,35 +49,35 @@ const Header = () => {
       {/* side bar */}
       <SideBar openBar={openBar} setOpenBar={setOpenBar} />
       {/* header */}
-      <div className={`${postion} top-0 left-0 w-full ${postion === "relative" ? "bg-white shadow-sm" : "transparent"}`} style={{ zIndex: 100 }}>
+      <div className={`${postion} top-0 left-0 w-full ${router.pathname === "/" ? postion === "absolute" ? "bg-transparent" : "bg-white" : "bg-white" } shadow-sm`} style={{ zIndex: 100 }}>
         <div className="relative px-4 py-6 flex justify-between items-center">
           {/* left section */}
-          <div className={`flex jusitfy-start items-center gap-5 ${postion === "relative" ? "text-black" : "text-white"}`}>
+          <div className={`flex jusitfy-start items-center gap-5 ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"}`}>
             <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenBar(true)}}>
               <RiMenu2Fill className="text-[25px]" />
             </div>
           </div>
           {/* middel section */}
           <div className="md:absolute relative md:left-[50%]    md:-translate-x-[50%]">
-            <a href="/"><div className={`md:text-xl text-sm font-diot font-bold cursor-pointer ${postion === "relative" ? "text-black" : "text-white"}`}>
+            <a href="/"><div className={`md:text-xl text-sm font-diot font-bold cursor-pointer ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"}`}>
               THREAD & TREADS
             </div></a>
           </div>
           {/* right section */}
           <div className=" flex justify-between items-center py-2 px-4 ">
-            <div className={`flex jusitfy-center items-center ${postion === "relative" ? "text-black" : "text-white"} gap-4`}>
+            <div className={`flex jusitfy-center items-center ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"} gap-4`}>
               <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenSearch(true)}}>
                 <CiSearch className="text-2xl" />
               </div>
               {/*  */}
               <a href="/whishlist">
-              <div className="flex justify-center items-center cursor-pointer 	">
+              <div className={`flex justify-center items-center cursor-pointer`}>
                 <CiHeart className="text-2xl" />
               </div>
               </a>
               {/*  */}
               <a href="/cart">
-              <div className="flex justify-center items-center cursor-pointer 	">
+              <div className={`flex justify-center items-center cursor-pointer`}>
                 <CiShoppingCart className="text-2xl" />
               </div>
               </a>
