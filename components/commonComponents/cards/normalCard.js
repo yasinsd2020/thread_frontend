@@ -148,7 +148,7 @@ const normalCard = () => {
     <>
       {data.map((item, index) => {
         return (
-          <>
+          <div key={index}>
             <Link href="/searchPage">
               <div key={index} className="md:p-2 mb-4 cursor-pointer">
                 <div className="h-[40vh] overflow-hidden md:h-[50vh] w-full relative  ">
@@ -202,7 +202,7 @@ const normalCard = () => {
                 </div>
               </div>
             </Link>
-          </>
+          </div>
         );
       })}
     </>

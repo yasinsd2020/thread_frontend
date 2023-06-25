@@ -16,16 +16,16 @@ import Image from "next/image";
 const banner = () => {
   const sliders = [
     {
-      image: Img1,
+      image: "https://image.brandi.me/home/banner/bannerImage_1197566_1687484233.jpg",
     },
     {
-      image: Img2,
+      image: "https://image.brandi.me/home/banner/bannerImage_1197386_1687481274.jpg",
     },
     {
-      image: Img3,
+      image: "https://image.brandi.me/home/banner/bannerImage_1197576_1687484233.jpg",
     },
     {
-      image: Img4,
+      image: "https://image.brandi.me/home/banner/bannerImage_1197285_1687480598.jpg",
     },
   ];
   return (
