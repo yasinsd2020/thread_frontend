@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
 import Image from "next/image";
 import "swiper/swiper.min.css";
+import Link from "next/link";
 
 const AllPageCrousel = ({ data }) => {
   const [showArrows, setShowArrows] = useState(true);
@@ -59,7 +60,7 @@ const AllPageCrousel = ({ data }) => {
           return (
             <>
               <SwiperSlide>
-                <a href="/product/123">
+                <Link href="/product/123">
                 <div className=" drop-shadow-md mb-4 cursor-pointer">
                   <div className="h-[30vh] overflow-hidden md:h-[45vh] w-full relative  ">
                     <Image
@@ -116,7 +117,7 @@ const AllPageCrousel = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </Link>
               </SwiperSlide>
             </>
           );

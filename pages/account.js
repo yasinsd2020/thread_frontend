@@ -90,7 +90,7 @@ const Account = () => {
         <div className="w-full p-2 shadow-md border rounded-lg flex justify-start items-center gap-2 mb-10">
           {/* avatar */}
           <div className="rounded-[50px] bg-gray-500 w-[60px] h-[60px] flex justify-center items-center font-bold text-2xl text-white">
-            AY
+            YS
           </div>
           {/* User Info */}
           <div className="flex flex-col justify-center items-start">
