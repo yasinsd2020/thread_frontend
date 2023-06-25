@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { CiHeart, CiSearch, CiShoppingCart,CiUser } from "react-icons/ci";
 import SearchBar from "./searchBar";
 import SideBar from "./sideBar";
+import Link from "next/link";
 
 const Header = () => {
   const [openSearch,setOpenSearch] = useState(false)
@@ -59,9 +60,9 @@ const Header = () => {
           </div>
           {/* middel section */}
           <div className="md:absolute relative md:left-[50%]    md:-translate-x-[50%]">
-            <a href="/"><div className={`md:text-xl text-sm font-diot font-bold cursor-pointer ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"}`}>
+            <Link href="/"><div className={`md:text-xl text-sm font-diot font-bold cursor-pointer ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"}`}>
               THREAD & TREADS
-            </div></a>
+            </div></Link>
           </div>
           {/* right section */}
           <div className=" flex justify-between items-center py-2 px-4 ">
@@ -70,21 +71,21 @@ const Header = () => {
                 <CiSearch className="text-2xl" />
               </div>
               {/*  */}
-              <a href="/account?tab=mywishlist">
+              <Link href="/account?tab=mywishlist">
               <div className={`flex justify-center items-center cursor-pointer`}>
                 <CiHeart className="text-2xl" />
               </div>
-              </a>
+              </Link>
               {/*  */}
-              <a href="/cart">
+              <Link href="/cart">
               <div className={`flex justify-center items-center cursor-pointer`}>
                 <CiShoppingCart className="text-2xl" />
               </div>
-              </a>
+              </Link>
               {/*  */}
-              <a href="/account" className="flex justify-center items-center cursor-pointer">
+              <Link href="/account" className="flex justify-center items-center cursor-pointer">
                 <CiUser className="text-2xl" />
-              </a>
+              </Link>
 
             </div>
           </div>

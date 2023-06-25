@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Path = () => {
     const router = useRouter()
@@ -21,7 +22,7 @@ const Path = () => {
         }
     },[router])
   return (
-    <div className='capitalize px-4 py-10 '><a href="/">Home</a> {path}</div>
+    <div className='capitalize px-4 py-10 '><Link href="/">Home</Link> {path}</div>
   )
 }
 

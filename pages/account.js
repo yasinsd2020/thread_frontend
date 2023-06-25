@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Profile from "../components/accounts/profile";
 import ChangePassword from "../components/accounts/changePassword";
 import MyWishlist from "../components/accounts/mywishlist";
+import Link from "next/link";
 
 const Account = () => {
   const tabs = [
@@ -112,7 +113,7 @@ const Account = () => {
               {section.tabs.map((tab, tIdx) => {
                 return (
                   <div key={tIdx} className="p-2">
-                    <a
+                    <Link
                       href={`/account?tab=${tab.query}`}
                       className={`flex justify-start items-center gap-2 text-sm font-normal hover:underline hover:text-black ${
                         currentTab === tab.query
@@ -122,7 +123,7 @@ const Account = () => {
                     >
                       <span className="text-2xl">{<tab.icon />}</span>{" "}
                       {tab.name}
-                    </a>
+                    </Link>
                   </div>
                 );
               })}
