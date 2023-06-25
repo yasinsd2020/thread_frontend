@@ -19,6 +19,7 @@ const SearchPage = () => {
     viewThree:false,
     viewFour:true
   })
+  const [makeSortFixed,setMakeSortFixed] = useState(false)
   useEffect(() => {
     const handleResize = () => {
       setIsWidth1240(window.innerWidth <= 1024);
@@ -35,13 +36,21 @@ const SearchPage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  console.log("open", gridShow);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 80){
+        setMakeSortFixed(true)
+      }else{
+        setMakeSortFixed(false)
+      }
+    })
+  },[])
   return (
     <>
 
-      <div className={`flex   ${isWidth1240 && 'flex-col '}`}>
-        {isWidth1240 ? <div className=" p-2 pl-1 fixed bg-white flex justify-evenly w-full  "
-          style={{ zIndex: 1000, }}
+      <div className={`flex py-2  ${isWidth1240 && 'flex-col '}`}>
+        {isWidth1240 ? <div className={` p-2 pl-1 ${makeSortFixed ? "fixed top-0 left-0" : "relative"} bg-white flex justify-evenly w-full  `}
+          style={{ zIndex: 500, }}
 
         >
           <div onClick={() => {
@@ -65,7 +74,7 @@ const SearchPage = () => {
         }
 
         <div className={`lg:ml-3 ${isWidth1240 ? 'w-full' : "w-[80%] "}`}>
-       {!isWidth1240 && <div className="fixed w-[80%] bg-white"
+       {!isWidth1240 && <div className={`${makeSortFixed ? "fixed" : "relative"} w-[100%] bg-white left-0 top-0`}
                       style={{ zIndex: 1000, }}
 
           >          
@@ -95,16 +104,11 @@ const SearchPage = () => {
           </div>
           </div> }   
 
-          <div className={`mx-3  mt-12 grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap2 md:grid-cols-3 ${gridShow?.viewThree && 'xl:grid-cols-3'}  ${gridShow?.viewFour && 'xl:grid-cols-4'}  `}>
+          <div className={`mx-3 grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap2 md:grid-cols-3 ${gridShow?.viewThree && 'xl:grid-cols-3'}  ${gridShow?.viewFour && 'xl:grid-cols-4'}  `}>
             <NormalCard />
           </div>
         </div>
       </div>
-
-      <div className="lg:relative">
-        <Footer />
-      </div>
-
     </>
   );
 };

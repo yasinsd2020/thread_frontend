@@ -68,10 +68,10 @@ const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCate
     return (
         <>
 
-            <div className={`
-          ${openBar ? ' w-[100%] h-full ease-linear  duration-150 fixed ' : isFixed && ' lg:fixed lg:w-[19.3%] fixed  bg-white '}
+            <div className={` ease-linear duration-150
+          ${openBar ? ' w-[100%] fixed top-0 left-0 h-screen bg-red-500  ' : isFixed && ' lg:fixed lg:w-[19.3%]   bg-white '}
           `}
-                style={{ zIndex: openBar && 1000, background: openBar && "rgba(0,0,0,0.5)" }}
+                style={{ zIndex: openBar && 600, background: openBar && "rgba(0,0,0,0.5)" }}
             >
                 <div className={`${openBar && 'relative bg-white md:w-[35%] w-[80%] h-full flex flex-col justify-start  px-5  py-4 '
 
@@ -82,7 +82,7 @@ const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCate
                          </div> 
                         }
                                   <div className="my-4  border-b border-gray pb-3"  >
-                        <div className="text-md font-semibold mb-4">PRODUCT SEARCH</div>
+                        <div className="text-xl font-semibold font-diot mb-4">PRODUCT SEARCH</div>
                         <div className={`flex items-center border border-gray-300 justify-evenly p-2 rounded shadow-md`} >
 
                             <div><input className="lg:w-[16vw] md:w-[23vw]  w-[58vw] sm:w-[68vw]  text-md outline-none" placeholder="search for products"></input></div>

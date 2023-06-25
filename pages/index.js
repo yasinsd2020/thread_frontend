@@ -9,14 +9,14 @@ import Footer from "../components/commonComponents/footer/footer";
 export default function LandingPage() {
   return (
     <div >
-        <Header/>
+        {/* <Header/> */}
         <Banner/>
         <AddBanner imgName={'/addBanner2.webp'} />
         <CategoryCards/>
         <NewArivel />
         <AddBanner imgName={'/add.webp'} />
         <BestSaler />
-        <Footer />
+        {/* <Footer /> */}
      </div>
   )
 }
