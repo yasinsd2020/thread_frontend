@@ -40,7 +40,7 @@ const Header = () => {
         }
       }
     })
-  },[])
+  },[router.pathname])
 
 
   return (

@@ -59,7 +59,7 @@ const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCate
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [setIsFixed]);
 
     const handleSliderChange = (value) => {
         setSliderValue(value);
