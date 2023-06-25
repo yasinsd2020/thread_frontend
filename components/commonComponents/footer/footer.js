@@ -106,13 +106,13 @@ const footer = () => {
                 </div>
             </div>
             {/*  */}
-            <hr className="bg-gray-100 my-4"/>
+            <hr className="bg-gray-400 opacity-[0.7] h-[0.1px] my-4"/>
             {/*  */}
             <article className="text-white text-center uppercase text-sm">Contact Us On : <span> &#x2b;123 456 7890 </span> </article>
           </div>
         </div>
         {/* copyright */}
-        <div className="pt-4 w-full border-t flex justify-center items-center" >
+        <div className="pt-4 w-full border-t-[.2px]  flex justify-center items-center" >
             <article className="text-xs text-gray-100">©️ 2023 THREADS & TREADS | All Rights Reserved.</article>
         </div>
       </div>
