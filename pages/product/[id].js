@@ -5,7 +5,7 @@ import {AiOutlineStar,AiFillStar} from "react-icons/ai"
 import {CiSquarePlus,CiSquareMinus} from "react-icons/ci"
 import CommonButton from "../../components/commonComponents/button/commonButton";
 import BestSaler from "../../components/bestSaler/bestSaler";
-import QuantityButton from "../../components/commonComponents/QuantityButton/QuantityButton";
+import PlusMinusButton from "../../components/commonComponents/plusMinusButton/plusMinusButton";
 
 const Product = () => {
   const productDetails = {
@@ -117,7 +117,7 @@ const Product = () => {
             {/*  */}
             <div className="flex flex-col justify-start items-start font-thin mb-10">
                 <span>Quantity : </span>
-                <QuantityButton wantQuality={wantQuality} setWantQuality={setWantQuality}  />
+                <PlusMinusButton wantQuality={wantQuality} setWantQuality={setWantQuality}  />
             </div>
             {/*  */}
             <div className="w-full gap-2 font-thin mb-20">

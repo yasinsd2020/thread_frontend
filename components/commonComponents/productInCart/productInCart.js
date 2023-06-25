@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { VscClose } from "react-icons/vsc";
-import QuantityButton from "../QuantityButton/quantityButton";
+import PlusMinusButton from "../plusMinusButton/plusMinusButton";
 
 const ProductInCart = ({ product }) => {
   const [wantQuality, setWantQuality] = useState(1);
@@ -42,7 +42,7 @@ const ProductInCart = ({ product }) => {
           </article>
         </div>
         <div className="flex-[0.2] flex justify-center items-center">
-          <QuantityButton
+          <PlusMinusButton
             wantQuality={wantQuality}
             setWantQuality={setWantQuality}
             customClass={`!w-min-[80px] h-[20px]`}
@@ -98,7 +98,7 @@ const ProductInCart = ({ product }) => {
             <article className="text-sm flex justify-center items-center">
               Quantity:
             </article>
-            <QuantityButton
+            <PlusMinusButton
               wantQuality={wantQuality}
               setWantQuality={setWantQuality}
               customClass={`!w-max-[20px] h-[20px] !border-[0.5px]`}
