@@ -1,5 +1,5 @@
 import React from "react";
-import PrimaryButton from "../commonComponents/button/primaryButton";
+import CommnonButton from "../commonComponents/button/commonButton";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 
@@ -50,7 +50,7 @@ const rightSection = () => {
         <div className="absolute bottom-0 left-0 w-full cursor-pointer "   
           // onClick={()=>{proccedCheckFun()}}
         ><Link href='./checkOutPage'>
-          <PrimaryButton  text={"Procced To Checkout"} customClass={`!uppercase w-full text-red-500 text-sm`} />
+          <CommnonButton  text={"Procced To Checkout"} customClass={`!uppercase w-full text-red-500 text-sm`} />
           </Link>
         </div>
       </div>

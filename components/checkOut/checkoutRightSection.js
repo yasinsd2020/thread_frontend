@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import PrimaryButton from '../commonComponents/button/primaryButton'
+import CommonButton from '../commonComponents/button/commonButton'
 const checkOutRightSection = () => {
     return (
         <div className='w-full h-auto bg-gray-100 border flex  flex-col gap-6 px-4 py-6 mt-10 '>
@@ -54,7 +54,7 @@ const checkOutRightSection = () => {
             <hr></hr>
                 {/* Button */}
                 <div className=" w-full cursor-pointer">
-                    <PrimaryButton text={"Procced To Order"} customClass={`!uppercase w-full text-red-500 text-sm`} />
+                    <CommonButton text={"Procced To Order"} customClass={`!uppercase w-full text-red-500 text-sm`} />
                 </div> 
                 
         </div>
