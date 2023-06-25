@@ -68,10 +68,10 @@ const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCate
     return (
         <>
 
-            <div className={`
-          ${openBar ? ' w-[100%] h-full ease-linear  duration-150 ' : isFixed && ' lg:fixed lg:w-[19.3%]   bg-white '}
+            <div className={` ease-linear duration-150
+          ${openBar ? ' w-[100%] fixed top-0 left-0 h-screen bg-red-500  ' : isFixed && ' lg:fixed lg:w-[19.3%]   bg-white '}
           `}
-                style={{ zIndex: openBar && 1000, background: openBar && "rgba(0,0,0,0.5)" }}
+                style={{ zIndex: openBar && 600, background: openBar && "rgba(0,0,0,0.5)" }}
             >
                 <div className={`${openBar && 'relative bg-white md:w-[35%] w-[80%] h-full flex flex-col justify-start  px-5  py-4 '
 

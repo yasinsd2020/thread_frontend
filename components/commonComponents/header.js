@@ -26,7 +26,7 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if(window.scrollY > 80){
-        if(router.pathname === "/searchPage" && router.pathname === "/account"){
+        if(router.pathname === "/searchPage" || router.pathname === "/account"){
           setPosition('relative')
         }else{
           setPosition('fixed')
@@ -50,7 +50,7 @@ const Header = () => {
       <SideBar openBar={openBar} setOpenBar={setOpenBar} />
       {/* header */}
       <div className={`${postion} top-0 left-0 w-full ${router.pathname === "/" ? postion === "absolute" ? "bg-transparent" : "bg-white" : "bg-white" } shadow-sm`} style={{ zIndex: 100 }}>
-        <div className="relative px-4 py-6 flex justify-between items-center">
+        <div className={`relative px-4 ${postion === "fixed" ? "py-2" : "py-4"} flex justify-between items-center`}>
           {/* left section */}
           <div className={`flex jusitfy-start items-center gap-5 ${router.pathname === "/" ? postion === "absolute" ? "text-white" : "text-black" : "text-black"}`}>
             <div className="flex justify-center items-center cursor-pointer" onClick={() => {setOpenBar(true)}}>
@@ -70,7 +70,7 @@ const Header = () => {
                 <CiSearch className="text-2xl" />
               </div>
               {/*  */}
-              <a href="/whishlist">
+              <a href="/account?tab=mywishlist">
               <div className={`flex justify-center items-center cursor-pointer`}>
                 <CiHeart className="text-2xl" />
               </div>
@@ -82,9 +82,9 @@ const Header = () => {
               </div>
               </a>
               {/*  */}
-              <div className="flex justify-center items-center cursor-pointer">
+              <a href="/account" className="flex justify-center items-center cursor-pointer">
                 <CiUser className="text-2xl" />
-              </div>
+              </a>
 
             </div>
           </div>

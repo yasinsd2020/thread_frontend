@@ -45,7 +45,7 @@ const Account = () => {
         {
           name: "My Whistlist",
           icon: CiHeart,
-          query: "mywhistlist",
+          query: "mywishlist",
         },
       ],
     },
@@ -77,6 +77,10 @@ const Account = () => {
     }
   };
 
+  const date = new Date()
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  const currentDate = `${days[date.getDay()]} - ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+
   return (
     <div className="relative md:h-[90vh] h-auto w-full md:flex">
       {/* leftSide */}
@@ -91,8 +95,8 @@ const Account = () => {
           <div className="flex flex-col justify-center items-start">
             <article className="font-semibold font-lg ">Abhishek Yadav</article>
             <div className="text-black flex justify-start items-center gap-2 font-thin text-xs">
-              <a href="/account?tab=changepassword" className="hover:underline">
-                Update Password
+              <a href="" className="hover:underline uppercase">
+                {currentDate}
               </a>
             </div>
           </div>

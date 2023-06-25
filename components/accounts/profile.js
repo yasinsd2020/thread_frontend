@@ -20,7 +20,7 @@ const Profile = () => {
     <div className="w-full md:min-h-[86vh] h-auto border shadow-sm md:p-8 p-2">
       {/* Heading */}
       <div className="mb-10">
-        <article className="text-4xl font-diot font-semibold">
+        <article className="text-4xl  font-normal">
           Hello, Abhishek{" "}
         </article>
         <article className="text-sm font-diot text-gray-500">
