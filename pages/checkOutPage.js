@@ -1,52 +1,23 @@
 import React from 'react'
-import Footer from '../components/commonComponents/footer/footer'
+import CheckoutRightSection from '../components/checkOut/checkoutRightSection'
+import CheckoutLeftSection from '../components/checkOut/checkoutLeftSection'
+import Address from '../components/checkOut/address'
 const checkOutPage = () => {
     return (
         <>
-            <div className=''>
-                <div className='bg-red-400 w-full flex h-screen items-center flex-row justify-center  '>
-                    <div className='w-[45%] bg-sky-500/50 h-[80vh]'></div>
-                    <div className='w-[45%] bg-red-800 h-[80vh] '>
-                        <div className='flex'>
-                            <div className=''>
-                                YOUR ORDER
-
-                            </div>
-
-                            <div className='bg-white'>
-                                <div className='flex'>
-                                    <div>
-                                        PRODUCT
-                                    </div>
-                                    <div>
-                                        SUBTOTAL
-                                    </div>
-                                </div>
-                                <div className='flex'>
-                                    <div>100% SHIMRA COTTON SHIRT - L  × 1</div>
-                                    <div>₹549.00</div>
-                                </div>
-                                <div className='flex'>
-                                    <div>Subtotal</div>
-                                    <div>₹549.00</div>
-                                </div>
-                                <div className='flex'>
-                                    <div>Shipping</div>
-                                    <div>Flat rate: ₹50.00</div>
-                                </div>
-                                <div className='flex'>
-                                    <div>Total</div>
-                                    <div>₹599.00</div>
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
+            <div className='py-10 lg:px-5'>
+                <div className='flex md:flex-row flex-col w-full lg:px-4 md:px-4 px-3 h-auto md:gap-10 gap-2'>
+                    {/* Left Section */}
+                    <div className='md:flex-[5] w-full h-full  '>
+                        <CheckoutLeftSection />
+                        <Address/>
                     </div>
-
+                    {/* Right Section */}
+                    <div>
+                        <CheckoutRightSection />
+                    </div>
                 </div>
             </div>
-            <Footer />
 
         </>
     )

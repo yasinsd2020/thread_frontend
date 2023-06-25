@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { VscClose } from "react-icons/vsc";
-import QuantityController from "../../commonComponents/quantityController/QuantityController";
+import QuantityController from "../quantityController/QuantityController";
 
 const ProductInCart = ({ product }) => {
   const [wantQuality, setWantQuality] = useState(1);
