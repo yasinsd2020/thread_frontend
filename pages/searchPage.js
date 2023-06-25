@@ -3,7 +3,7 @@ import NormalCard from "../components/commonComponents/cards/normalCard";
 import Footer from "../components/commonComponents/footer/footer";
 import SideBar from "../components/commonComponents/sideBar";
 import Slider from 'rc-slider';
-import CategoryComp from "../components/commonComponents/categoryComp/categoryComp";
+import CategorySideBar from "../components/commonComponents/CategorySideBar/CategorySideBar";
 import { useEffect, useState } from 'react';
 import { VscListFilter } from "react-icons/vsc";
 import { BiSort } from "react-icons/bi";
@@ -66,11 +66,11 @@ const SearchPage = () => {
         </div>
 
           : <div className={`w-[20%] ${openBar ? "" : "pl-5"} lg:visible   "`}>
-            <CategoryComp openBar={openBar} setOpenBar={setOpenBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
+            <CategorySideBar openBar={openBar} setOpenBar={setOpenBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
 
           </div>
         }
-        {openBar && <CategoryComp setOpenBar={setOpenBar} openBar={openBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
+        {openBar && <CategorySideBar setOpenBar={setOpenBar} openBar={openBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
         }
 
         <div className={`lg:ml-3 ${isWidth1240 ? 'w-full' : "w-[80%] "}`}>

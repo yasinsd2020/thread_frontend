@@ -1,7 +1,7 @@
 import React from "react";
 import {HiPlus,HiMinus} from "react-icons/hi"
 
-const quantityButton = ({wantQuality,setWantQuality,customClass}) => {
+const plusMinusButton = ({wantQuality,setWantQuality,customClass}) => {
   return (
     <>
       <div className={`flex h-[25px] min-w-[100px] justify-start items-start border-y border-black mt-1 !${customClass && customClass}`}>
@@ -25,4 +25,4 @@ const quantityButton = ({wantQuality,setWantQuality,customClass}) => {
   );
 };
 
-export default quantityButton;
+export default plusMinusButton;

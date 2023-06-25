@@ -43,7 +43,7 @@ const links = [
         href: "/",
     },
 ];
-const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCategoryShow, isFixed, categoryShow, sliderValue }) => {
+const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCategoryShow, isFixed, categoryShow, sliderValue }) => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.pageYOffset;
@@ -171,4 +171,4 @@ const CategoryComp = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCate
     )
 }
 
-export default CategoryComp
+export default CategorySideBar
