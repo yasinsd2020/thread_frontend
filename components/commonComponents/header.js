@@ -42,8 +42,9 @@ const Header = () => {
           return setPosition("relative");
         }
       }
-    });
-  }, []);
+    })
+  },[router.pathname])
+
 
   return (
     <>

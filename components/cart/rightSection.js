@@ -1,10 +1,16 @@
 import React from "react";
-import PrimaryButton from "../commonComponents/button/primaryButton";
+import CommnonButton from "../commonComponents/button/commonButton";
+import Link from "next/link";
+// import { useRouter } from "next/router";
 
-const RightSection = () => {
+const rightSection = () => {
+  // const Router =useRouter();
+  // const proccedCheckFun =()=>{
+  //   Router.push('./checkOutPage')
+  // }
   return (
     <div className="w-full h-auto bg-gray-100 border px-4 py-6 mt-10">
-      <div className="relative w-full min-h-[45vh]">
+      <div className="relative w-full h-[48vh]">
         <article className="text-2xl font-diot mb-10">CART TOTALS</article>
         {/* subtotal */}
         <div className="w-full flex justify-between items-center">
@@ -41,12 +47,15 @@ const RightSection = () => {
           <article className="text-xl">₹1,148.00</article>
         </div>
         {/* Button */}
-        <div className="absolute bottom-0 left-0 w-full cursor-pointer">
-          <PrimaryButton text={"Procced To Checkout"} customClass={`!uppercase w-full text-red-500 text-sm`} />
+        <div className="absolute bottom-0 left-0 w-full cursor-pointer "   
+          // onClick={()=>{proccedCheckFun()}}
+        ><Link href='./checkOutPage'>
+          <CommnonButton  text={"Procced To Checkout"} customClass={`!uppercase w-full text-red-500 text-sm`} />
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default RightSection;
+export default rightSection;

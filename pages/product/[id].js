@@ -3,9 +3,9 @@ import Path from "../../components/commonComponents/path/path";
 import { useState } from "react";
 import {AiOutlineStar,AiFillStar} from "react-icons/ai"
 import {CiSquarePlus,CiSquareMinus} from "react-icons/ci"
-import PrimaryButton from "../../components/commonComponents/button/primaryButton";
+import CommonButton from "../../components/commonComponents/button/commonButton";
 import BestSaler from "../../components/bestSaler/bestSaler";
-import QuantityController from "../../components/commonComponents/quantityController/QuantityController";
+import PlusMinusButton from "../../components/commonComponents/plusMinusButton/plusMinusButton";
 
 const Product = () => {
   const productDetails = {
@@ -117,7 +117,7 @@ const Product = () => {
             {/*  */}
             <div className="flex flex-col justify-start items-start font-thin mb-10">
                 <span>Quantity : </span>
-                <QuantityController wantQuality={wantQuality} setWantQuality={setWantQuality}  />
+                <PlusMinusButton wantQuality={wantQuality} setWantQuality={setWantQuality}  />
             </div>
             {/*  */}
             <div className="w-full gap-2 font-thin mb-20">
@@ -132,8 +132,8 @@ const Product = () => {
             </div>
             {/*  */}
             <div className="flex justify-start items-center gap-1">
-                <PrimaryButton text={'Add To Cart'} />
-                <PrimaryButton text={'Buy Now'} />
+                <CommonButton text={'Add To Cart'} />
+                <CommonButton text={'Buy Now'} />
             </div>
           </div>
         </div>
