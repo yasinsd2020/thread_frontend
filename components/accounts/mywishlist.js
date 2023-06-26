@@ -5,23 +5,23 @@ import Image from 'next/image'
 const MyWishlist = () => {
     const products = [
         {
-            prdImage : "https://static.zara.net/photos///2023/I/0/2/p/8574/353/402/2/w/1126/8574353402_1_1_1.jpg?ts=1684826344013",
-            prdName : "LEMON PRINT SWIMMING TRUNKS - LIMITED EDITION",
+            prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/87/094/L_g0114309487.jpg",
+            prdName : "Wewewow - Mock Two-Piece Elbow-Sleeve T-Shirt",
             prdPrice : "₹ 2,590.00"
         },
         {
-            prdImage : "https://static.zara.net/photos///2023/V/0/2/p/4260/012/401/2/w/1126/4260012401_1_1_1.jpg?ts=1676457811994",
-            prdName : "STRIPED TEXTURED SHIRT",
+            prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/41/778/L_p0106677841.jpg",
+            prdName : "DuckleBeam - Reversible Plaid Zip Jacket",
             prdPrice : "₹ 2,990.00"
         },
         {
-            prdImage : "https://static.zara.net/photos///2023/V/0/2/p/4259/012/066/2/w/1126/4259012066_1_1_1.jpg?ts=1676457783093",
-            prdName : "STRIPED TEXTURED SHIRT",
+            prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/75/365/XXL_p0146436575.jpg",
+            prdName : "Posive - Hooded Cargo Jacket",
             prdPrice : "₹ 2,990.00"
         },
         {
-            prdImage : "https://static.zara.net/photos///2023/V/1/1/p/3915/010/107/2/w/1126/3915010107_1_1_1.jpg?ts=1674747362750",
-            prdName : "CLARKS® X ZARA LEATHER SHOES",
+            prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/80/222/XXL_p0145222280.jpg",
+            prdName : "Posive - Color Block Hooded Bomber Jacket",
             prdPrice : "₹ 12,990.00"
         }
     ]

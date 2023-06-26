@@ -57,6 +57,13 @@ body {
   z-index: 10;
 }
 
+/* swiper arrow */
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next 
+ {
+  color: #fff;
+}
+
 ::-webkit-scrollbar{
   display: none;
 }
@@ -72,3 +79,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
