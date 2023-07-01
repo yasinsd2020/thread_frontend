@@ -9,23 +9,22 @@ import PlusMinusButton from "../../components/commonComponents/plusMinusButton/p
 
 const Product = () => {
   const productDetails = {
-    name: "VISCOSE - LINEN SHIRT",
+    name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
     price: "3,290.00",
     description: "Relaxed fit bowling shirt made of a linen and viscose blend. Featuring short sleeves and a button-up front.",
-    category: "Electronics",
     inStock: true,
     images: [
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_1_1_1.jpg?ts=1686233133881",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_2_1_1.jpg?ts=1686233134190",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_2_2_1.jpg?ts=1686233134488",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/34/823/L_g0181382334.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/35/823/L_g0181382335.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/36/823/L_g0181382336.jpg",
 
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_2_3_1.jpg?ts=1686233133729",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_2_4_1.jpg?ts=1686233134725",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_2_5_1.jpg?ts=1686233134771",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/37/823/L_g0181382337.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/38/823/L_g0181382338.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/39/823/L_g0181382339.jpg",
 
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_1_1.jpg?ts=1686757101244",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_2_1.jpg?ts=1686213850158",
-      "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_3_1.jpg?ts=1686213851432",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/40/823/L_g0181382340.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/41/823/L_g0181382341.jpg",
+      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/42/823/L_g0181382342.jpg",
     ],
     reviews: 2,
     colors: ["Red", "Blue", "Green"],
@@ -49,7 +48,7 @@ const Product = () => {
           {/* product details left side */}
           <div className="md:w-[45%] w-full md:h-full h-[400px] flex flex-row md:justify-start justify-start md:items-start items-start gap-2">
             {/* side image */}
-            <div className="w-[15%]  h-full   overflow-auto hideScroll">
+            <div className="w-[15%] h-full overflow-auto hideScroll">
               {productDetails.images.map((image, idx) => {
                 return (
                   <div
@@ -68,7 +67,7 @@ const Product = () => {
               })}
             </div>
             {/* main image */}
-            <div className=" relative w-[85%] w-full md:h-full h-[400px]">
+            <div className=" relative w-[85%] w-full md:h-full h-[400px] border">
               <Image
                 src={mainImage}
                 layout="fill"
