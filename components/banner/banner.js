@@ -17,19 +17,19 @@ const banner = () => {
   const sliders = [
     {
       image:
-        "https://image.brandi.me/home/banner/bannerImage_1197566_1687484233.jpg",
+        "http://jogunshop.img18.kr/web/upload/usa/en_main_visual_buttonless_overfit_summer_cardigan.jpg",
     },
     {
       image:
-        "https://image.brandi.me/home/banner/bannerImage_1197386_1687481274.jpg",
+        "http://jogunshop.img18.kr/web/upload/usa/en_main_visual_daily_look_pk_short_sleeve_tee.jpg",
     },
     {
       image:
-        "https://image.brandi.me/home/banner/bannerImage_1197576_1687484233.jpg",
+        "http://jogunshop.img18.kr/web/upload/usa/en_main_visual_cool_tensel_3type_hidden_banding_denim.jpg",
     },
     {
       image:
-        "https://image.brandi.me/home/banner/bannerImage_1197285_1687480598.jpg",
+        "http://jogunshop.img18.kr/web/upload/usa/en_main_visual_arctic_19colors_spandex_summer_shorts.jpg",
     },
   ];
   return (

@@ -10,62 +10,62 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import AllPageCrousel from '../commonComponents/cards/allPageCrousel';
 const data = [{
-    name: "Men Shirt Classy Rich Look",
-    img: "/tShirt.jpg",
+    name: "Shineon Studio - Plain Wide-Leg Jogger Pants",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/93/487/XXL_p0144148793.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "Phoneus - Short Sleeve Pocket Front Plain Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/00/034/XXL_p0193403400.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 }, {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "Shineon Studio - Plain Cargo Wide Leg Drawstring Pants",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/01/552/XXL_p0147555201.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "Phoneus - Long Sleeve Pinstripe Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/27/385/XXL_p0182738527.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "Phoneus - Long Sleeve Tie Dye Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/30/734/XXL_p0193373430.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/hoodies.jpg",
+    name: "Phoneus - Long Sleeve Tie Dye Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/21/741/XXL_p0193374121.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/hoodies.jpg",
+    name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/33/823/XXL_p0181382333.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
+    name: "Andrei - Elbow-Sleeve Plain Pocket Detail Oversized Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/13/108/XXL_p0191910813.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
+    name: "Andrei - Set: Elbow-Sleeve Collar Two Tone Oversized T-Shirt + Mid Rise Plain Pocket Detail Shorts",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/70/352/XXL_p0193135270.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },
 {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
+    name: "Orungeetun - Elbow-Sleeve Crew Neck Plain Oversized T-Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/57/539/XXL_p0189453957.jpg",
     amount: "300rs",
     cutAmount: "400rs"
 },

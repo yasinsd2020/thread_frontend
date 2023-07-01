@@ -6,23 +6,23 @@ const LeftSection = () => {
     {
       prdId:"1234",  
       prdImage:
-        "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_2_1.jpg?ts=1686213850158",
+        "https://d1flfk77wl2xk4.cloudfront.net/Assets/03/524/XXL_p0192152403.jpg",
       prdSize: "XL",
-      prdName: "100% SHIMRA COTTON SHIRT",
+      prdName: "Phoneus - Hooded Zip Baseball Jacket",
       prdPrice: "₹549.00",
     },
     {prdId:"1234",
       prdImage:
-        "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_2_1.jpg?ts=1686213850158",
+        "https://d1flfk77wl2xk4.cloudfront.net/Assets/49/551/XXL_p0167355149.jpg",
       prdSize: "XL",
-      prdName: "100% SHIMRA COTTON SHIRT",
+      prdName: "Aozora - Hood Zip Baseball Jacket",
       prdPrice: "₹549.00",
     },
     {prdId:"1234",
       prdImage:
-        "https://static.zara.net/photos///2023/I/0/2/p/5679/101/400/2/w/1126/5679101400_6_2_1.jpg?ts=1686213850158",
+        "https://d1flfk77wl2xk4.cloudfront.net/Assets/75/831/XXL_p0161583175.jpg",
       prdSize: "XL",
-      prdName: "100% SHIMRA COTTON SHIRT",
+      prdName: "Plummie - Panda Baseball Jacket",
       prdPrice: "₹549.00",
     },
   ];

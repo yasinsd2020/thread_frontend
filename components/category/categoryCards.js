@@ -3,7 +3,7 @@ import CardCrousel from '../commonComponents/cards/cardCrousel'
 const categoryCards = () => {
   return (
     <>
-    <div className='text-center mx-8 mb-4 text-2xl uppercase font-normal font-diot'>Category&apos;s</div>
+    <div className='text-center  my-4 md:text-2xl text-xl uppercase font-normal font-diot'>Category&apos;s</div>
     <CardCrousel />
     </>
     )

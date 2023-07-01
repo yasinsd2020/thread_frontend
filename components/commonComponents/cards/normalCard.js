@@ -12,8 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 const data = [
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/tShirt.jpg",
+    name: "GRAYCIOUS - Baseball Jacket",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/31/168/XXL_p0156416831.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -25,8 +25,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "GRAYCIOUS - Two-Tone Baseball Jacket",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/66/986/XXL_p0164798666.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -38,8 +38,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "DragonRoad - Plain Zip Fluffy Hoodie",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/27/882/XXL_p0185088227.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -51,8 +51,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "Chuoku - Japanese Print Short-Sleeve T-Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/60/860/XXL_p0124886060.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -64,8 +64,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/denim.jpg",
+    name: "GRAYCIOUS - Plain Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/43/666/XXL_p0136266643.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -77,8 +77,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/hoodies.jpg",
+    name: "GRAYCIOUS - 3/4-Sleeve Plain Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/87/792/XXL_p0180879287.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -90,8 +90,8 @@ const data = [
     ],
   },
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/hoodies.jpg",
+    name: "GRAYCIOUS - Plain Pocket Detail Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/82/459/XXL_p0190045982.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -104,8 +104,8 @@ const data = [
   },
 
   {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
+    name: "Besto - Plain Pocket Detail Shirt",
+    img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/94/609/XXL_p0185660994.jpg",
     amount: "300rs",
     cutAmount: "400rs",
     size: [
@@ -115,33 +115,7 @@ const data = [
       { size4: "xl" },
       { size5: "xxl" },
     ],
-  },
-  {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
-    amount: "300rs",
-    cutAmount: "400rs",
-    size: [
-      { size1: "s" },
-      { size2: "m" },
-      { size3: "l" },
-      { size4: "xl" },
-      { size5: "xxl" },
-    ],
-  },
-  {
-    name: "Men Shirt Classy Rich Look",
-    img: "/jumper.jpg",
-    amount: "300rs",
-    cutAmount: "400rs",
-    size: [
-      { size1: "s" },
-      { size2: "m" },
-      { size3: "l" },
-      { size4: "xl" },
-      { size5: "xxl" },
-    ],
-  },
+  }
 ];
 const normalCard = () => {
   return (
