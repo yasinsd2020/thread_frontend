@@ -16,16 +16,20 @@ import Image from "next/image";
 const banner = () => {
   const sliders = [
     {
-      image: "https://image.brandi.me/home/banner/bannerImage_1197566_1687484233.jpg",
+      image:
+        "https://image.brandi.me/home/banner/bannerImage_1197566_1687484233.jpg",
     },
     {
-      image: "https://image.brandi.me/home/banner/bannerImage_1197386_1687481274.jpg",
+      image:
+        "https://image.brandi.me/home/banner/bannerImage_1197386_1687481274.jpg",
     },
     {
-      image: "https://image.brandi.me/home/banner/bannerImage_1197576_1687484233.jpg",
+      image:
+        "https://image.brandi.me/home/banner/bannerImage_1197576_1687484233.jpg",
     },
     {
-      image: "https://image.brandi.me/home/banner/bannerImage_1197285_1687480598.jpg",
+      image:
+        "https://image.brandi.me/home/banner/bannerImage_1197285_1687480598.jpg",
     },
   ];
   return (
@@ -43,12 +47,13 @@ const banner = () => {
           }}
           navigation={false}
           modules={[Autoplay]}
-          className="mySwiper h-[85vh]"
+          className="mySwiper md:h-[85vh] h-[30vh]"
         >
-          {sliders.map((slider,idx) => {
+          {sliders.map((slider, idx) => {
             return (
               <SwiperSlide key={idx}>
-                <div className="h-full w-full relative ">
+                <div
+                  className="h-full w-full relative">
                   <Image
                     src={slider.image}
                     layout="fill"
