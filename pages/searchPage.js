@@ -106,6 +106,7 @@ const SearchPage = () => {
 
           <div className={`mx-3 grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap2 md:grid-cols-3 ${gridShow?.viewThree && 'xl:grid-cols-3'}  ${gridShow?.viewFour && 'xl:grid-cols-4'}  `}>
             <NormalCard />
+            
           </div>
         </div>
       </div>
