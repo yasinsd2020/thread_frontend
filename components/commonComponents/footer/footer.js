@@ -36,11 +36,11 @@ const footer = () => {
           {/* logo, contact, links */}
           <div className="flex md:flex-[0.3] w-full flex-col">
             {/*  */}
-            <article className="text-white uppercase md:text-[24px] font-bold cursor-pointer font-diot mb-6">
+            <article className="text-white uppercase md:text-[24px] font-bold cursor-pointer font-diot mb-6 md:text-left text-center">
               thread & treads
             </article>
             {/*  */}
-            <div className="flex flex-wrap flex-col w-[200px] gap-2 max-h-[100px]">
+            <div className="flex flex-wrap flex-col md:w-[200px] w-auto gap-2 max-h-[100px] justify-center md:items-start items-center">
               {qLinks.map((link, idx) => {
                 return (
                   <a
