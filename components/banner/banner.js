@@ -47,7 +47,7 @@ const banner = () => {
           }}
           navigation={false}
           modules={[Autoplay]}
-          className="mySwiper md:h-[85vh] h-[30vh]"
+          className="mySwiper md:h-[85vh] h-[40vh]"
         >
           {sliders.map((slider, idx) => {
             return (
