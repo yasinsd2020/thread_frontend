@@ -9,9 +9,12 @@ import { CiHeart, CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import SearchBar from "./searchBar";
 import SideBar from "./sideBar";
 import Link from "next/link";
-
+import LoginRegister from "../loginRegister/loginRegister";
 const Header = () => {
   const [openSearch, setOpenSearch] = useState(false);
+  const [loginPopup,setLoginPopup] = useState({
+    login:false ,register:false
+  })
   const [openBar, setOpenBar] = useState(false);
   const [postion, setPosition] = useState("relative");
   const router = useRouter();
@@ -52,6 +55,8 @@ const Header = () => {
       <SearchBar openSearch={openSearch} setOpenSearch={setOpenSearch} />
       {/* side bar */}
       <SideBar openBar={openBar} setOpenBar={setOpenBar} />
+      {/* login and register */}
+      <LoginRegister setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
       {/* header */}
       <div
         className={`${postion} top-0 left-0 w-full ${
@@ -156,12 +161,13 @@ const Header = () => {
                 </div>
               </Link>
               {/*  */}
-              <Link
+              {/* <Link
                 href="/account"
                 className="flex justify-center items-center cursor-pointer"
-              >
-                <CiUser className="md:text-2xl text-xl" />
-              </Link>
+              > */}
+                <CiUser onClick={() => setLoginPopup((prev)=>{return { ...prev,login:true }})} className="md:text-2xl text-xl" />
+              {/* </Link> */}
+              
             </div>
           </div>
           {/* category section */}

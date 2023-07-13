@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, name, value, type, customCss }) => {
+const Input = ({ label, name, value, type, customCss,placeholder }) => {
   return (
     <div>
       <article>{label}</article>
@@ -11,6 +11,7 @@ const Input = ({ label, name, value, type, customCss }) => {
           className="w-full h-full outline-none border-none text-gray-500"
           value={value}
           name={name}
+          placeholder={placeholder}
           defaultValue={value}
         />
       </div>
