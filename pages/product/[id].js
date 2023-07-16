@@ -36,9 +36,9 @@ const Product = () => {
   const [mainImage, setMainImage] = useState(productDetails.images[0]);
   const [addToWislist,setAddToWislist] = useState(false)
   const [selectedSize,setSelectedSize] = useState(productDetails.sizes[0])
-  const [selectedColor,setSelectedColor] = useState(productDetails.colors[0])
   const [wantQuality,setWantQuality] = useState(1)
   const [showDescription,setShowDescription] = useState(false)
+  
   return (
     <>
       <Path />
