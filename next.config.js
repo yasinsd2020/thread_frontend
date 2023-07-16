@@ -6,6 +6,9 @@ const nextConfig = {
     domains: ['images.pexels.com',"static.zara.net","image.brandi.me","seoulish.kr","d1flfk77wl2xk4.cloudfront.net","jogunshop.img18.kr"],
     loader: 'default',
   },
+  env: {
+    baseBackendUrl: 'https://www.threadtreads.com',
+  },
 };
 
 module.exports = nextConfig;

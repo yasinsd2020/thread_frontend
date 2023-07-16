@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import { VscListFilter } from "react-icons/vsc";
 import { BiSort } from "react-icons/bi";
 import { MdViewCompact, MdApps } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { getListOfProductAction } from "../redux/actions/products/productAction";
 
 const SearchPage = () => {
   const [categoryShow, setCategoryShow] = useState(false)
@@ -15,6 +17,7 @@ const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState([400, 1000]);
   const [openBar, setOpenBar] = useState(false)
   const [isWidth1240, setIsWidth1240] = useState(false);
+  const dispatch = useDispatch()
   const [gridShow,setGridShow] =useState({
     viewThree:false,
     viewFour:true
@@ -36,6 +39,7 @@ const SearchPage = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if(window.scrollY > 80){
@@ -44,7 +48,14 @@ const SearchPage = () => {
         setMakeSortFixed(false)
       }
     })
+
+    dispatch(getListOfProductAction())
+    
   },[])
+
+
+
+
   return (
     <>
 
