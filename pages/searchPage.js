@@ -56,9 +56,6 @@ const SearchPage = () => {
 
 
 const allProuct = useSelector((state)=>state.products)
-console.log('    dispatch(getListOfProductAction())',  allProuct
-);
-
   return (
     <>
 
@@ -119,7 +116,7 @@ console.log('    dispatch(getListOfProductAction())',  allProuct
           </div> }   
 
           <div className={`mx-3 grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap2 md:grid-cols-3 ${gridShow?.viewThree && 'xl:grid-cols-3'}  ${gridShow?.viewFour && 'xl:grid-cols-4'}  `}>
-            <NormalCard data={allProuct?.products?.products} />
+            <NormalCard data={allProuct?.products} />
             
           </div>
         </div>

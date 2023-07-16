@@ -40,15 +40,17 @@ const Product = () => {
   const [selectedSize,setSelectedSize] = useState(productDetails.sizes[0])
   const [wantQuality,setWantQuality] = useState(1)
   const [showDescription,setShowDescription] = useState(false)
+  const [showingVarient,setShowingVarient] = useState(1)
   const dispatch = useDispatch()
   const router =useRouter()
   useEffect(() => {
-    dispatch(getSingleProductAction(Number(router.query.id))) 
+    dispatch(getSingleProductAction(Number(router.query.product_id))) 
+    setShowingVarient(Number(router.query.product_varient)||1)
   },[router.query])
 
-  const singleSelector =useSelector((state)=>state.products)
+  const {loading,singleProduct} = useSelector((state)=>state.products)
 
-console.log('singleSelector',singleSelector?.singleProduct[0]?.variants);
+console.log('singleSelector',singleProduct[0]);
   return (
     <>
       <Path />
@@ -89,9 +91,11 @@ console.log('singleSelector',singleSelector?.singleProduct[0]?.variants);
           {/* product details right side */}
           <div className="md:w-[55%] w-full h-full overflow-y-auto">
             {/*  */}
-            <article className="md:text-3xl text-2l font-thin mb-4">{productDetails.name}</article>
+            {singleProduct[0]?.brand && <article className="md:text-sm text-xs font-normal mb-2 text-gray-500">{singleProduct[0]?.brand}</article>}
             {/*  */}
-            <div className="flex justify-start items-center gap-1 "><article className="md:text-lg font-thin">Reviews : </article> 
+            <article className="md:text-3xl text-2l font-thin mb-4 uppercase">{singleProduct[0]?.name}</article>
+            {/*  */}
+            {/* <div className="flex justify-start items-center gap-1 "><article className="md:text-lg font-thin">Reviews : </article> 
                 <div className="flex justify-start items-center gap-1">
                     {
                         tReview.map((_,idx) => {
@@ -103,11 +107,11 @@ console.log('singleSelector',singleSelector?.singleProduct[0]?.variants);
                         })
                     }
                 </div>
-            </div>
+            </div> */}
             {/*  */}
             <article className="underline cursor-pointer font-thin my-4 uppercase" onClick={() => setAddToWislist(!addToWislist)}>{!addToWislist ? "Add To Wishlist" : "Remove From Wishlist"}</article>
             {/*  */}
-            <div className="flex justify-start items-center font-thin gap-1 mb-2"><span>Price : </span> {productDetails.price} Rs.</div>
+            <div className="flex flex-col justify-start items-start font-thin gap-1 mb-2"><span className="text-[25px] font-semibold">{singleProduct[0]?.variants[showingVarient]?.final_amount} Rs.</span> <div className="text-xs"><del className="text-red-500">{singleProduct[0]?.variants[showingVarient]?.original_amount} Rs.</del> (20% OFF)</div></div>
             {/*  */}
             <div className="flex flex-col justify-center items-start font-thin mb-5"><span>Size ({selectedSize}) : 
                 <div className="flex justify-start items-center gap-2 mt-2">

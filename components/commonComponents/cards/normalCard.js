@@ -126,42 +126,25 @@ const NormalCard = ({data}) => {
         return (
           <div key={index}   onClick={() => {
             router.push({
-              pathname:`/product/${item.id}`            })
+              pathname:`/product/info`,
+              query : {
+                product_id : item.id
+              }
+            })
           }}>
             {/* <Link href="/searchPage"> */}
               <div key={index} className="md:p-2 mb-4 cursor-pointer">
                 <div className="h-[40vh] overflow-hidden md:h-[50vh] w-full relative  ">
                   <Image
-                    src={`/${item.featured_image}`}
+                    src={ 0 ?`/${item.featured_image}` : `https://d1flfk77wl2xk4.cloudfront.net/Assets/31/878/XXL_p0196487831.jpg`}
                     layout="fill"
                     className="relative object-cover  hover:scale-110	 ease-in duration-500"
                   />
                 </div>
-                <div>
-                  <div className="flex w-full justify-center my-2 ">
+                <div className="my-2">
+                  <div className="flex w-full justify-center mb-1">
                     <div className="flex justify-around  w-[70%] place-content-center ">
-                      {/* <TfiHeart className='text-2xl ' /> */}
-                      {/* {item.size.map((nest)=>{
-                                                    return(
-                                                        <> */}
-                      <button className=" uppercase  text-black text-xs md:text-sm font-semibold ">
-                        s
-                      </button>
-                      <button className="  uppercase text-black text-xs md:text-sm font-semibold ">
-                        m
-                      </button>{" "}
-                      <button className="  text-black uppercase text-xs md:text-sm font-semibold ">
-                        l
-                      </button>
-                      <button className="  uppercase text-black text-xs md:text-sm font-semibold ">
-                        xl
-                      </button>
-                      <button className="  uppercase text-black text-xs md:text-sm font-semibold ">
-                        xxl
-                      </button>
-                      {/* </>
-                                                    )
-                                                })} */}
+                      <article className="text-[14px] text-gray-500">{item?.brand}</article>
                     </div>
                   </div>
                   <div className="text-center mb-2 text-sm">
@@ -170,13 +153,11 @@ const NormalCard = ({data}) => {
                       : item.name}
                   </div>
                   <div className="flex justify-between flex-col items-center">
-                    <div className="flex items-center mb-1 gap-1">
-                      <div className="font-semibold text-sm">{item.amount}</div>
-                      <div>/</div>
-                      <div className="line-through text-sm">
-                        {item.cutAmount}
+                      <div className="flex justify-center items-center mb-1 ">
+                        <del className="mr-2"><div className="font-normal text-xs">&#8377;{item?.variants[0]?.original_amount}</div></del>
+                        <div className="text-red-500">20% OFF</div>
                       </div>
-                    </div>
+                      <div className="font-semibold text-lg">&#8377;{item?.variants[0]?.final_amount}</div>
                   </div>
                 </div>
               </div>
