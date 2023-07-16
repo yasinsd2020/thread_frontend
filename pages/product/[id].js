@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Path from "../../components/commonComponents/path/path";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {AiOutlineStar,AiFillStar} from "react-icons/ai"
 import {CiSquarePlus,CiSquareMinus} from "react-icons/ci"
 import CommonButton from "../../components/commonComponents/button/commonButton";
 import BestSaler from "../../components/bestSaler/bestSaler";
 import PlusMinusButton from "../../components/commonComponents/plusMinusButton/plusMinusButton";
-
+import { getListOfProductAction, getSingleProductAction } from "../../redux/actions/products/productAction";
+import { useDispatch,useSelector } from "react-redux";
+import { useRouter } from "next/router";
 const Product = () => {
   const productDetails = {
     name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
@@ -38,7 +40,15 @@ const Product = () => {
   const [selectedSize,setSelectedSize] = useState(productDetails.sizes[0])
   const [wantQuality,setWantQuality] = useState(1)
   const [showDescription,setShowDescription] = useState(false)
-  
+  const dispatch = useDispatch()
+  const router =useRouter()
+  useEffect(() => {
+    dispatch(getSingleProductAction(Number(router.query.id))) 
+  },[router.query])
+
+  const singleSelector =useSelector((state)=>state.products)
+
+console.log('singleSelector',singleSelector?.singleProduct[0]?.variants);
   return (
     <>
       <Path />

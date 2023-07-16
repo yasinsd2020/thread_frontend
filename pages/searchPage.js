@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { VscListFilter } from "react-icons/vsc";
 import { BiSort } from "react-icons/bi";
 import { MdViewCompact, MdApps } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { getListOfProductAction } from "../redux/actions/products/productAction";
 
 const SearchPage = () => {
@@ -17,6 +17,7 @@ const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState([400, 1000]);
   const [openBar, setOpenBar] = useState(false)
   const [isWidth1240, setIsWidth1240] = useState(false);
+  const [listOfProduct,setListOfProduct] = useState()
   const dispatch = useDispatch()
   const [gridShow,setGridShow] =useState({
     viewThree:false,
@@ -49,12 +50,14 @@ const SearchPage = () => {
       }
     })
 
-    dispatch(getListOfProductAction())
-    
+    window.addEventListener('load',()=>{
+      dispatch(getListOfProductAction())  })
   },[])
 
 
-
+const allProuct = useSelector((state)=>state.products)
+console.log('    dispatch(getListOfProductAction())',  allProuct
+);
 
   return (
     <>
@@ -116,7 +119,7 @@ const SearchPage = () => {
           </div> }   
 
           <div className={`mx-3 grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap2 md:grid-cols-3 ${gridShow?.viewThree && 'xl:grid-cols-3'}  ${gridShow?.viewFour && 'xl:grid-cols-4'}  `}>
-            <NormalCard />
+            <NormalCard data={allProuct?.products?.products} />
             
           </div>
         </div>
