@@ -120,6 +120,7 @@ import { useRouter } from "next/router";
 // ];
 const NormalCard = ({data}) => {
   const router =useRouter()
+  console.log('data',data);
   return (
     <>
       {data?.map((item, index) => {
