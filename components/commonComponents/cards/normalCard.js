@@ -118,11 +118,11 @@ import { useRouter } from "next/router";
 //     ],
 //   }
 // ];
-const normalCard = ({data}) => {
+const NormalCard = ({data}) => {
   const router =useRouter()
   return (
     <>
-      {data.map((item, index) => {
+      {data?.map((item, index) => {
         return (
           <div key={index}   onClick={() => {
             router.push({
@@ -188,4 +188,4 @@ const normalCard = ({data}) => {
   );
 };
 
-export default normalCard;
+export default NormalCard;

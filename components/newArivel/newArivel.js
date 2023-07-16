@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import NormalCard from '../commonComponents/cards/normalCard'
 import { getListOfProductAction } from '../../redux/actions/products/productAction'
 import { useDispatch,useSelector } from 'react-redux'
-function newArivel() {  
+function NewArivel() {  
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -13,6 +13,7 @@ function newArivel() {
     
     
     const allProuct = useSelector((state)=>state.products)
+
     return (
         <>
             <div className='text-center my-4 md:text-2xl text-xl uppercase font-normal font-diot'>New Arivel&#x2019;s</div>
@@ -24,4 +25,4 @@ function newArivel() {
     )
 }
 
-export default newArivel
+export default NewArivel
