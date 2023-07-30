@@ -9,6 +9,7 @@ import PlusMinusButton from "../../components/commonComponents/plusMinusButton/p
 import { getListOfProductAction, getSingleProductAction } from "../../redux/actions/products/productAction";
 import { useDispatch,useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { addProductToCartAction } from "../../redux/actions/products/carts/cartsAction";
 const Product = () => {
   
 
@@ -25,15 +26,30 @@ const Product = () => {
   const mainImageRender =()=>{
     setMainImage(singleProduct[0]?.featured_image)
   }
+  // get products when router gets
   useEffect(() => {
     dispatch(getSingleProductAction(Number(router.query.variant_id))) 
     setShowingVarient(Number(router.query.variant_id)||1)
 
   },[router])
 
+  // useEffect when we get some response from api
   useEffect(()=>{
     mainImageRender()
   },[singleProduct])
+
+  // add to cart function
+  const handleAddToCart = () => {
+    const productInfo = {
+        product_id : singleProduct[0]?.id,
+        variant_id : singleProduct[0]?.current_variant?.id
+    }
+
+    if(!loading){
+      dispatch(addProductToCartAction('9',productInfo?.variant_id,productInfo?.product_id))
+    }
+  }
+
   const productDetails = {
     name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
     price: "3,290.00",
@@ -82,7 +98,7 @@ const Product = () => {
               })}
             </div>
             {/* main image */}
-            <div className=" relative w-[85%] w-full md:h-full h-[400px] border">
+            <div className=" relative md:w-[85%] w-full md:h-full h-[400px] border">
               <Image
                 src={` https://www.threadtreads.com/uploads/product/${mainImage}`}
                 layout="fill"
@@ -148,7 +164,7 @@ const Product = () => {
             </div>
             {/*  */}
             <div className="flex justify-start items-center gap-1">
-                <CommonButton text={'Add To Cart'} />
+                <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton text={'Add To Cart'} /></div>
                 <CommonButton text={'Buy Now'} />
             </div>
           </div>

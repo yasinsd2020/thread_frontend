@@ -6,11 +6,11 @@ import thunk from 'redux-thunk'
 
 const percsistConfig = {
     key : 'root',
-    storage
+    storage,
+    blacklist:['tostification']
 }
 
 const percsistedReducer = persistReducer(percsistConfig,reducers)
-
 
 export const store = configureStore({
     reducer : percsistedReducer,
