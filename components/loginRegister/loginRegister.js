@@ -21,6 +21,7 @@ const loginRegister = ({ setLoginPopup, loginPopup }) => {
                             onClick={() => setLoginPopup((prev) => { return { ...prev, login: false } })}
                         >
                             <TfiClose />
+                            
                         </div>
                     </div>
 
