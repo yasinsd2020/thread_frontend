@@ -12,7 +12,7 @@ function NewArivel() {
   },[])
 
   const allProuct = useSelector((state) => state.products);
-
+console.log("allProuct",allProuct);
   return (
     <>
       <div className="text-center my-4 md:text-2xl text-xl uppercase font-normal font-diot">

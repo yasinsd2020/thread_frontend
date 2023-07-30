@@ -10,47 +10,50 @@ import { getListOfProductAction, getSingleProductAction } from "../../redux/acti
 import { useDispatch,useSelector } from "react-redux";
 import { useRouter } from "next/router";
 const Product = () => {
+  
+
+  const tReview = [true, true, true, true, true]
+  const [addToWislist,setAddToWislist] = useState(false)
+  const [wantQuality,setWantQuality] = useState(1)
+  const [showDescription,setShowDescription] = useState(false)
+  const [showingVarient,setShowingVarient] = useState(1)
+  const dispatch = useDispatch()
+  const router =useRouter()
+  const {loading,singleProduct} = useSelector((state)=>state.products)
+  const [mainImage, setMainImage] = useState('');
+  // main image function
+  const mainImageRender =()=>{
+    setMainImage(singleProduct[0]?.featured_image)
+  }
+  useEffect(() => {
+    dispatch(getSingleProductAction(Number(router.query.variant_id))) 
+    setShowingVarient(Number(router.query.variant_id)||1)
+
+  },[router])
+
+  useEffect(()=>{
+    mainImageRender()
+  },[singleProduct])
   const productDetails = {
     name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
     price: "3,290.00",
     description: "Relaxed fit bowling shirt made of a linen and viscose blend. Featuring short sleeves and a button-up front.",
     inStock: true,
     images: [
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/34/823/L_g0181382334.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/35/823/L_g0181382335.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/36/823/L_g0181382336.jpg",
-
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/37/823/L_g0181382337.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/38/823/L_g0181382338.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/39/823/L_g0181382339.jpg",
-
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/40/823/L_g0181382340.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/41/823/L_g0181382341.jpg",
-      "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/42/823/L_g0181382342.jpg",
+      (singleProduct[0]?.variants?.map(item=>item?.image_1))?.toString(),
+      (singleProduct[0]?.variants?.map(item=>item?.image_2))?.toString(),
+      (singleProduct[0]?.variants?.map(item=>item?.image_3))?.toString(),
+      (singleProduct[0]?.variants?.map(item=>item?.image_4))?.toString(),
     ],
     reviews: 2,
     colors: ["Red", "Blue", "Green"],
     sizes: ["S", "M", "L", "XL","XXL","XXLL"],
     // You can add more properties as needed
   };
-
-  const tReview = [true, true, true, true, true]
-  const [mainImage, setMainImage] = useState(productDetails.images[0]);
-  const [addToWislist,setAddToWislist] = useState(false)
   const [selectedSize,setSelectedSize] = useState(productDetails.sizes[0])
-  const [wantQuality,setWantQuality] = useState(1)
-  const [showDescription,setShowDescription] = useState(false)
-  const [showingVarient,setShowingVarient] = useState(1)
-  const dispatch = useDispatch()
-  const router =useRouter()
-  useEffect(() => {
-    dispatch(getSingleProductAction(Number(router.query.product_id))) 
-    setShowingVarient(Number(router.query.product_varient)||1)
-  },[router.query])
 
-  const {loading,singleProduct} = useSelector((state)=>state.products)
 
-console.log('singleSelector',singleProduct[0]);
+// console.log('singleSelector',(singleProduct[0]?.variants?.map(item=>item?.image_1))?.toString());
   return (
     <>
       <Path />
@@ -70,7 +73,7 @@ console.log('singleSelector',singleProduct[0]);
                     onMouseEnter={() => setMainImage(image)}
                   >
                     <Image
-                      src={image}
+                      src={`https://www.threadtreads.com/uploads/product/${image}`}
                       layout="fill"
                       className="relative object-cover"
                     />
@@ -81,7 +84,7 @@ console.log('singleSelector',singleProduct[0]);
             {/* main image */}
             <div className=" relative w-[85%] w-full md:h-full h-[400px] border">
               <Image
-                src={mainImage}
+                src={` https://www.threadtreads.com/uploads/product/${mainImage}`}
                 layout="fill"
                 className="relative object-cover"
               />

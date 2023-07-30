@@ -1,15 +1,15 @@
 import {  getListOfProductAPI, getSingleProductAPI } from "../../../apis/apis"
 import { LIST_OF_PRODUCTS, PRODUCT_ERROR, PRODUCT_LOADING, SINGEL_PRODUCT } from "../../const/products/productsConst"
 
-export const getSingleProductAction = (productId) => async (dispatch) => {
+export const getSingleProductAction = (variant_productId) => async (dispatch) => {
     try{
-        console.log(productId,'productId');
+        console.log(variant_productId,'variant_productId');
         dispatch({
             type : PRODUCT_LOADING,
             payload : true
         })
 
-        const apiResponse = await getSingleProductAPI(productId)
+        const apiResponse = await getSingleProductAPI(variant_productId)
     
         dispatch({
             type : SINGEL_PRODUCT,

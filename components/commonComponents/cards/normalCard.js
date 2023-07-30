@@ -124,12 +124,13 @@ const NormalCard = ({data}) => {
   return (
     <>
       {data?.map((item, index) => {
+        console.log("ddd",item.variants?.map(e=>e.id));
         return (
           <div key={index}   onClick={() => {
             router.push({
               pathname:`/product/info`,
               query : {
-                product_id : item.id
+                variant_id : item.variants?.map(e=>e.id)
               }
             })
           }}>
@@ -137,7 +138,7 @@ const NormalCard = ({data}) => {
               <div key={index} className="md:p-2 mb-4 cursor-pointer">
                 <div className="h-[40vh] overflow-hidden md:h-[50vh] w-full relative  ">
                   <Image
-                    src={ 0 ?`/${item.featured_image}` : `https://d1flfk77wl2xk4.cloudfront.net/Assets/31/878/XXL_p0196487831.jpg`}
+                    src={ ` https://www.threadtreads.com/uploads/product/${item.featured_image}`}
                     layout="fill"
                     className="relative object-cover  hover:scale-110	 ease-in duration-500"
                   />
