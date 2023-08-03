@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductInCart from "../commonComponents/productInCart/productInCart";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { getCartAction } from "../../redux/actions/products/carts/cartsAction";
 
 const LeftSection = () => {
   const InCart = [
@@ -26,6 +29,12 @@ const LeftSection = () => {
       prdPrice: "₹549.00",
     },
   ];
+  const router = useRouter();
+  const dispatch =useDispatch();
+  useEffect(()=>{
+    dispatch(getCartAction(9))
+  },[router])
+
   return (
     <div className="w-full h-auto">
         {/* table heading show only on lappy */}
@@ -45,13 +54,13 @@ const LeftSection = () => {
       </div>
       {/* product list section  */}
       <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
-        {
+        {/* {
             InCart?.map((cartPrd,idx) => {
                 return (
                     <ProductInCart key={idx} product={cartPrd} />
                 )
             })
-        }
+        } */}
       </div>
       {/* Subtotal */}
       <div className="md:hidden w-full flex justify-end items-center py-4 text-xl text-gray-500">SUBTOTAL : ₹549.00</div>

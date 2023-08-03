@@ -34,11 +34,11 @@ const Tostify = () => {
             })
 
             //  uncomment to set timeout functionality
-            // const timeout = setTimeout(() => {
-            //     handleClosePop()
-            //   }, 3000);
+            const timeout = setTimeout(() => {
+                handleClosePop()
+              }, 3000);
         
-            //   return () => clearTimeout(timeout);
+              return () => clearTimeout(timeout);
         }else{
             setShowTosify(false)
         }

@@ -9,3 +9,7 @@ export const addToCartAPI = (product_info) => api.post('/order/add_to_cart',prod
 export const getAllCartProductAPI = (user_id) => api.post('/order/user_cart',user_id)
 export const removeFromCartAPI = (product_info) => api.post('/order/remove_from_cart',product_info)
 
+// add to whishlist
+export const addToWishListAPI = (product_info) => api.post('/order/add_to_wishlist',product_info) 
+export const getWishListAPI = (product_info) => api.post('/order/user_wishlist',product_info) 
+export const removeWishListAPI  = (product_info) => api.post('/order/remove_from_wishlist',product_info)
