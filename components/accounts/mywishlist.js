@@ -67,7 +67,14 @@ const MyWishlist = () => {
             {
                 WishProduct.map((item,idx) => {
                     return (
-                        <div key={idx} className='relative w-full h-[500px] bg-white shadow-md flex flex-col'>
+                        <div key={idx} className='relative w-full h-[500px] bg-white shadow-md flex flex-col' 
+                        onClick={()=> router.push({
+                            pathname:`/product/info`,
+                            query : {
+                              variant_id : item?.product_variant?.id
+                            }
+                          })}
+                        >
                             {/* image */}
                             <div className='relative w-full h-full flex-[85]'>
                                 <Image src={` https://www.threadtreads.com/uploads/product/variants/${item.product_variant.image_1}`} layout='fill' className='relative object-cover '/>
