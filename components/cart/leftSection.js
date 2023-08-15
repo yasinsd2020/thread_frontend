@@ -1,31 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductInCart from "../commonComponents/productInCart/productInCart";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { getCartAction } from "../../redux/actions/products/carts/cartsAction";
 
 const LeftSection = () => {
-  const InCart = [
-    {
-      prdId:"1234",  
-      prdImage:
-        "https://d1flfk77wl2xk4.cloudfront.net/Assets/03/524/XXL_p0192152403.jpg",
-      prdSize: "XL",
-      prdName: "Phoneus - Hooded Zip Baseball Jacket",
-      prdPrice: "₹549.00",
-    },
-    {prdId:"1234",
-      prdImage:
-        "https://d1flfk77wl2xk4.cloudfront.net/Assets/49/551/XXL_p0167355149.jpg",
-      prdSize: "XL",
-      prdName: "Aozora - Hood Zip Baseball Jacket",
-      prdPrice: "₹549.00",
-    },
-    {prdId:"1234",
-      prdImage:
-        "https://d1flfk77wl2xk4.cloudfront.net/Assets/75/831/XXL_p0161583175.jpg",
-      prdSize: "XL",
-      prdName: "Plummie - Panda Baseball Jacket",
-      prdPrice: "₹549.00",
-    },
-  ];
+
+  const router = useRouter();
+  const dispatch =useDispatch();
+  useEffect(()=>{
+    dispatch(getCartAction(9))
+  },[router])
+const {cartReducer} =useSelector(state=>state)
+
+
   return (
     <div className="w-full h-auto">
         {/* table heading show only on lappy */}
@@ -40,15 +28,15 @@ const LeftSection = () => {
           Quantity
         </div>
         <div className="flex-[0.2]  flex justify-center items-center">
-          Sub Total
+          Remove
         </div>
       </div>
       {/* product list section  */}
       <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
         {
-            InCart?.map((cartPrd,idx) => {
+            cartReducer?.CartList?.map((cartPrd) => {
                 return (
-                    <ProductInCart key={idx} product={cartPrd} />
+                    <ProductInCart key={cartPrd?.id} product={cartPrd} />
                 )
             })
         }

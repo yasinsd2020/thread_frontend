@@ -6,10 +6,13 @@ import {CiSquarePlus,CiSquareMinus} from "react-icons/ci"
 import CommonButton from "../../components/commonComponents/button/commonButton";
 import BestSaler from "../../components/bestSaler/bestSaler";
 import PlusMinusButton from "../../components/commonComponents/plusMinusButton/plusMinusButton";
-import { getListOfProductAction, getSingleProductAction } from "../../redux/actions/products/productAction";
+import { getList_NewArivelAction, getAll_SingleProductAction } from "../../redux/actions/products/productAction";
 import { useDispatch,useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { addProductToCartAction } from "../../redux/actions/products/carts/cartsAction";
+import { addWishListAction } from "../../redux/actions/products/wishlist/wishListAction";
+import {AiFillHeart,AiOutlineHeart} from "react-icons/ai"
+
 const Product = () => {
   
 
@@ -22,17 +25,20 @@ const Product = () => {
   const router =useRouter()
   const {loading,singleProduct} = useSelector((state)=>state.products)
   const [mainImage, setMainImage] = useState('');
-  // main image function
-  const mainImageRender =()=>{
-    setMainImage(singleProduct[0]?.featured_image)
-  }
+
   // get products when router gets
   useEffect(() => {
-    dispatch(getSingleProductAction(Number(router.query.variant_id))) 
+    dispatch(getAll_SingleProductAction({variant_productId:Number(router.query.variant_id)})) 
     setShowingVarient(Number(router.query.variant_id)||1)
 
   },[router])
 
+
+    // main image function
+    const mainImageRender =()=>{
+      setMainImage( (singleProduct[0]?.variants?.map(item=>item?.image_1))?.toString())
+  
+    }
   // useEffect when we get some response from api
   useEffect(()=>{
     mainImageRender()
@@ -40,15 +46,34 @@ const Product = () => {
 
   // add to cart function
   const handleAddToCart = () => {
-    const productInfo = {
-        product_id : singleProduct[0]?.id,
-        variant_id : singleProduct[0]?.current_variant?.id
-    }
-
+ 
     if(!loading){
-      dispatch(addProductToCartAction('9',productInfo?.variant_id,productInfo?.product_id))
+      dispatch(addProductToCartAction({ product_id : singleProduct[0]?.id,
+        variant_id : singleProduct[0]?.current_variant?.id ,user_id:9}))
     }
   }
+
+  // add to wishList function
+  const handleAddWishList =()=>{
+    const productInfo = {
+      product_id : singleProduct[0]?.id,
+      variant_id : singleProduct[0]?.current_variant?.id
+  }
+
+  if(!loading){
+
+    dispatch(addWishListAction('9',productInfo?.variant_id,productInfo?.product_id))
+  }
+
+  
+    setAddToWislist(!addToWislist)
+
+  }
+//   const handleRemoveWishList =(wishlist_id)=>{
+//     dispatch(removeWishListAction(wishlist_id))
+   
+    
+// }
 
   const productDetails = {
     name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
@@ -81,6 +106,7 @@ const Product = () => {
             {/* side image */}
             <div className="w-[15%] h-full overflow-auto hideScroll">
               {productDetails.images.map((image, idx) => {
+                console.log(image,'image');
                 return (
                   <div
                     key={idx}
@@ -89,7 +115,7 @@ const Product = () => {
                     onMouseEnter={() => setMainImage(image)}
                   >
                     <Image
-                      src={`https://www.threadtreads.com/uploads/product/${image}`}
+                      src={`https://www.threadtreads.com/uploads/product/variants/${image}`}
                       layout="fill"
                       className="relative object-cover"
                     />
@@ -100,7 +126,7 @@ const Product = () => {
             {/* main image */}
             <div className=" relative md:w-[85%] w-full md:h-full h-[400px] border">
               <Image
-                src={` https://www.threadtreads.com/uploads/product/${mainImage}`}
+                src={` https://www.threadtreads.com/uploads/product/variants/${mainImage}`}
                 layout="fill"
                 className="relative object-cover"
               />
@@ -128,7 +154,8 @@ const Product = () => {
                 </div>
             </div> */}
             {/*  */}
-            <article className="underline cursor-pointer font-thin my-4 uppercase" onClick={() => setAddToWislist(!addToWislist)}>{!addToWislist ? "Add To Wishlist" : "Remove From Wishlist"}</article>
+            <article className="underline cursor-pointer font-thin my-4 uppercase" onClick={() => handleAddWishList()}>{!addToWislist ? <AiOutlineHeart /> : <AiFillHeart className='text-red-500'/>
+}</article>
             {/*  */}
             <div className="flex flex-col justify-start items-start font-thin gap-1 mb-2"><span className="text-[25px] font-semibold">{singleProduct[0]?.variants[showingVarient]?.final_amount} Rs.</span> <div className="text-xs"><del className="text-red-500">{singleProduct[0]?.variants[showingVarient]?.original_amount} Rs.</del> (20% OFF)</div></div>
             {/*  */}

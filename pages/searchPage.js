@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import NormalCard from "../components/commonComponents/cards/normalCard";
 import Footer from "../components/commonComponents/footer/footer";
 import SideBar from "../components/commonComponents/sideBar";
@@ -9,22 +9,28 @@ import { VscListFilter } from "react-icons/vsc";
 import { BiSort } from "react-icons/bi";
 import { MdViewCompact, MdApps } from "react-icons/md";
 import { useDispatch,useSelector } from "react-redux";
-import { getListOfProductAction } from "../redux/actions/products/productAction";
-
+import { getList_NewArivelAction, getAll_SingleProductAction } from "../redux/actions/products/productAction";
+import { useRouter } from "next/router";
 const SearchPage = () => {
+  const router =useRouter()
   const [categoryShow, setCategoryShow] = useState(false)
   const [isFixed, setIsFixed] = useState(false);
+  const [searchProd,setSearchProd] = useState(router.query.query_search)
   const [sliderValue, setSliderValue] = useState([400, 1000]);
   const [openBar, setOpenBar] = useState(false)
   const [isWidth1240, setIsWidth1240] = useState(false);
   const [listOfProduct,setListOfProduct] = useState()
+  // const [catgorProd,setCategoryProd] = useState()
+
   const dispatch = useDispatch()
   const [gridShow,setGridShow] =useState({
     viewThree:false,
     viewFour:true
   })
   const [makeSortFixed,setMakeSortFixed] = useState(false)
+
   useEffect(() => {
+
     const handleResize = () => {
       setIsWidth1240(window.innerWidth <= 1024);
       if (window.innerWidth <= 1024) {
@@ -42,6 +48,8 @@ const SearchPage = () => {
   }, []);
 
   useEffect(() => {
+    // temporary user id waiting for token
+    dispatch(getAll_SingleProductAction({user_id:9})) 
     window.addEventListener('scroll', () => {
       if(window.scrollY > 80){
         setMakeSortFixed(true)
@@ -50,12 +58,36 @@ const SearchPage = () => {
       }
     })
 
-    window.addEventListener('load',()=>{
-      dispatch(getListOfProductAction())  })
   },[])
 
+  useEffect(()=>{
+    setSearchProd(router.query.query_search)
+    
+  },[router])
 
+// search keypress function
+const handleKeyPress=(e)=>{
+  if(e.key === 'Enter'){
+    dispatch(getAll_SingleProductAction({
+      keyword:searchProd
+    })) 
+    router.push({
+      query:{
+        query_search:searchProd
+      }
+  
+    })
+  }
+
+}
+const handleCategory=(category_id)=>{
+  dispatch(getAll_SingleProductAction({
+    category_id:category_id
+  })) 
+}
 const allProuct = useSelector((state)=>state.products)
+console.log('allProuct',allProuct);
+
   return (
     <>
 
@@ -77,11 +109,14 @@ const allProuct = useSelector((state)=>state.products)
         </div>
 
           : <div className={`w-[20%] ${openBar ? "" : "pl-5"} lg:visible   "`}>
-            <CategorySideBar openBar={openBar} setOpenBar={setOpenBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
+            <CategorySideBar searchProd ={searchProd} handleKeyPress={handleKeyPress} handleCategory={handleCategory}
+            setSearchProd={setSearchProd}  openBar={openBar} setOpenBar={setOpenBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
 
           </div>
         }
-        {openBar && <CategorySideBar setOpenBar={setOpenBar} openBar={openBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
+        {openBar && <CategorySideBar
+        rySideBar searchProd ={searchProd}  handleKeyPress={handleKeyPress} handleCategory={handleCategory}
+            setSearchProd={setSearchProd}  setOpenBar={setOpenBar} openBar={openBar} categoryShow={categoryShow} isFixed={isFixed} sliderValue={sliderValue} setSliderValue={setSliderValue} setCategoryShow={setCategoryShow} setIsFixed={setIsFixed} />
         }
 
         <div className={`lg:ml-3 ${isWidth1240 ? 'w-full' : "w-[80%] "}`}>
