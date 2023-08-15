@@ -2,56 +2,86 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { VscClose } from "react-icons/vsc";
 import PlusMinusButton from "../plusMinusButton/plusMinusButton";
+import { useDispatch } from "react-redux";
+import { increamentCartAction, removeCartAction } from "../../../redux/actions/products/carts/cartsAction";
 
 const ProductInCart = ({ product }) => {
-  const [wantQuality, setWantQuality] = useState(1);
+  const dispatch =useDispatch()
+  const handleRemveCart=()=>{
+    dispatch(removeCartAction({
+      user_id:product?.user_id ||9,
+      product_id: product?.product_id,
+      variant_id: product?.product_variant?.id})
+    )
+  }
+
+  //  increament count
+  const handleIncreamentCart =()=>{
+    dispatch(increamentCartAction({
+      user_id:product?.user_id ||9,
+      product_id: product?.product_id,
+      variant_id: product?.product_variant?.id}))
+  }
+  console.log("product?.qty",product);
+  const [wantQuality, setWantQuality] = useState(Number(product?.qty));
   return (
     <div className="border border-gray p-2 mb-2">
       {/* section for lappy */}
       <div className="md:flex hidden flex-row">
         {/* product details */}
         <div className="flex-[0.4] flex justify-start items-center gap-2">
-          {/* close */}
-          <div className="cursor-pointer">
-            <span className="text-xl">
-              <VscClose />
-            </span>
-          </div>
+      
           {/* image */}
           <div className="relative w-[80px] h-[100px]">
             <Image
-              src={product?.prdImage}
+              src={`https://www.threadtreads.com/uploads/product/${product?.product?.featured_image}`}
               layout="fill"
               className="relative w-full h-full object-cover"
             />
           </div>
           {/* Info */}
-          <div className="flex text-sm gap-1 uppercase">
+          <div className="flex flex-col text-sm gap-1 uppercase">
             <article>
-              {product.prdName.length > 25
-                ? `${product.prdName.slice(0, 25)}...`
-                : product.prdName}
+              {product.product.name.length > 25
+                ? `${product.product.name.slice(0, 25)}...`
+                : product.product.name}
             </article>
-            <span>-</span>
-            <article>{product.prdSize}</article>
+            <div className="flex"> <div className="mr-3">Size :  </div>  
+                       <article>{product?.product_variant?.size}</article>
+            </div>
+            <div className="flex"> <div className="mr-3">Color :  </div>  
+                       <article>{product?.product_variant?.color}</article>
+            </div>
+            <div className="flex"> 
+                       <article className="text-green-700">{product?.product_variant?.tag}</article>
+            </div>
           </div>
         </div>
         <div className="flex-[0.2] flex justify-center items-center">
-          <article className="text-sm text-gray font-thin">
-            {product.prdPrice}
+          <article className="text-sm text-gray font-thin text-red-400 line-through">
+            {product?.product_variant?.original_amount}
+          </article>
+          <div className="mx-2 text-lg ">/</div>
+          <article className="text-lg  text-gray text-green-700 font-normal">
+            {product?.product_variant?.final_amount}
           </article>
         </div>
         <div className="flex-[0.2] flex justify-center items-center">
           <PlusMinusButton
+          handleIncreamentCart={handleIncreamentCart}
             wantQuality={wantQuality}
+            handleRemveCart={handleRemveCart}
             setWantQuality={setWantQuality}
             customClass={`!w-min-[80px] h-[20px]`}
           />
         </div>
         <div className="flex-[0.2] flex justify-center items-center">
-          <article className="text-normal text-black font-bold">
-            {product.prdPrice}
-          </article>
+            
+              <div className="cursor-pointer">
+            <span className="text-xl">
+              <VscClose onClick={()=>handleRemveCart()} />
+            </span>
+          </div>
         </div>
       </div>
       {/* section for mobile */}
@@ -59,7 +89,7 @@ const ProductInCart = ({ product }) => {
         {/* close */}
         <div className="absolute top-[2px] right-[2px] cursor-pointer">
           <span className="text-xl">
-            <VscClose />
+            <VscClose  />
           </span>
         </div>
         {/* product details */}
@@ -67,7 +97,7 @@ const ProductInCart = ({ product }) => {
           {/* image */}
           <div className="relative w-[80px] h-[140px]">
             <Image
-              src={product?.prdImage}
+              src={`https://www.threadtreads.com/uploads/product/${product?.product?.featured_image}`}
               layout="fill"
               className="relative w-full h-full object-cover"
             />
@@ -78,9 +108,9 @@ const ProductInCart = ({ product }) => {
           {/* name */}
           <div className="flex flex-col text-sm uppercase mb-2 ">
             <article>
-              {product.prdName.length > 20
-                ? `${product.prdName.slice(0, 20)}...`
-                : product.prdName}
+              {product.product.name.length > 20
+                ? `${product.product.name.slice(0, 20)}...`
+                : product.product.name}
             </article>
             <article className="text-xs">-{product.prdSize}</article>
           </div>

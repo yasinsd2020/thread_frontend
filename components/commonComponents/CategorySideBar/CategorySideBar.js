@@ -4,6 +4,8 @@ import { TfiClose, TfiSearch } from 'react-icons/tfi'
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
 import 'rc-slider/assets/index.css';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryListAction } from '../../../redux/actions/category/categoryListAction';
 
 const links = [
     {
@@ -43,7 +45,7 @@ const links = [
         href: "/",
     },
 ];
-const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setCategoryShow, isFixed, categoryShow, sliderValue }) => {
+const CategorySideBar = ({ handleCategory, handleKeyPress, setSearchProd, openBar, searchProd, setOpenBar, setSliderValue, setIsFixed, setCategoryShow, isFixed, categoryShow, sliderValue }) => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.pageYOffset;
@@ -64,7 +66,12 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
     const handleSliderChange = (value) => {
         setSliderValue(value);
     };
-
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getCategoryListAction())
+    }, [])
+    const allCategory = useSelector(state => state.categoryList?.categoryList)
+    console.log(allCategory, 'allCategory');
     return (
         <>
 
@@ -76,16 +83,16 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
                 <div className={`${openBar && 'relative bg-white md:w-[35%] w-[80%] h-full flex flex-col justify-start  px-5  py-4 '
 
                     } relative`}>
-                        {openBar &&
-                             <div className="cursor-pointer flex justify-end" >
-                             <TfiClose onClick={() => setOpenBar(false)}  />
-                         </div> 
-                        }
-                                  <div className="my-4  border-b border-gray pb-3"  >
+                    {openBar &&
+                        <div className="cursor-pointer flex justify-end" >
+                            <TfiClose onClick={() => setOpenBar(false)} />
+                        </div>
+                    }
+                    <div className="my-4  border-b border-gray pb-3"  >
                         <div className="text-xl font-semibold font-diot mb-4">PRODUCT SEARCH</div>
                         <div className={`flex items-center border border-gray-300 justify-evenly p-2 rounded shadow-md`} >
 
-                            <div><input className="lg:w-[16vw] md:w-[23vw]  w-[58vw] sm:w-[68vw]  text-md outline-none" placeholder="search for products"></input></div>
+                            <div><input className="lg:w-[16vw] md:w-[23vw]  w-[58vw] sm:w-[68vw]  text-md outline-none" onKeyPress={(e) => handleKeyPress(e)} value={searchProd} onChange={(e) => { setSearchProd(e.target.value) }} placeholder="search for products"></input></div>
 
                             <div><TfiSearch className="text-lg " /></div>
                         </div>
@@ -100,19 +107,17 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
                             }
                         </div>
                         <div className={`${categoryShow ? 'w-full h-[30vh] overflow-scroll pl-[5%] flex flex-col pt-2 ' : 'hidden'}`}>
-                            {links.map((link, idx) => {
+                            {allCategory.map((link, idx) => {
                                 return (
-                                    <div key={idx} className="w-full py-1.5 ">
-                                        <a href={link.href}>
-                                            <div className="font-extralight text-gray-600 text-md ">{link.name}</div>
-                                        </a>
+                                    <div key={idx} className="w-full py-1.5 cursor-pointer">
+                                        <div className="font-extralight text-gray-600 text-md " onClick={() => { handleCategory(link.id) }}>{link.code}</div>
                                     </div>
                                 );
                             })}
                         </div>
                     </div>
                     <div className="my-4 w-full">
-                        <div className="text-md font-semibold">FILTER BY PRICE</div>
+                        {/* <div className="text-md font-semibold">FILTER BY PRICE</div> */}
                         <div className="w-full">
                             <div className="my-8">
                                 <style>
@@ -137,9 +142,8 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
                     }
                     `}
                                 </style>
-                                <Slider
+                                {/* <Slider
                                     range
-                                    // reverse
                                     min={400}
                                     max={1000}
                                     defaultValue={[400, 1000]}
@@ -147,10 +151,10 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
                                     trackStyle={[{ backgroundColor: 'black' }, { backgroundColor: 'black' }]}
                                     handleStyle={[{ backgroundColor: 'black' }, { backgroundColor: 'black' }]}
                                     railStyle={{ backgroundColor: 'light-gray', height: '3px', cursor: "pointer" }}
-                                />
+                                /> */}
 
                             </div>
-                            <div className="flex items-center flex-row justify-between lg:flex-row">
+                            {/* <div className="flex items-center flex-row justify-between lg:flex-row">
                                 <div className="flex lg:w-[16vw] items-center">
                                     <div className="text-gray-700 text-sm">Price:</div>
                                     <div className="flex items-center  w-full justify-start ">
@@ -160,7 +164,7 @@ const CategorySideBar = ({ openBar, setOpenBar, setSliderValue, setIsFixed, setC
                                     </div>
                                 </div>
                                 <div className="bg-black text-white text-xs font-bold px-3 py-2 cursor-pointer">FILTER</div>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

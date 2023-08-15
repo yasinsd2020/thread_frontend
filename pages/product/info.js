@@ -6,7 +6,7 @@ import {CiSquarePlus,CiSquareMinus} from "react-icons/ci"
 import CommonButton from "../../components/commonComponents/button/commonButton";
 import BestSaler from "../../components/bestSaler/bestSaler";
 import PlusMinusButton from "../../components/commonComponents/plusMinusButton/plusMinusButton";
-import { getListOfProductAction, getSingleProductAction } from "../../redux/actions/products/productAction";
+import { getList_NewArivelAction, getAll_SingleProductAction } from "../../redux/actions/products/productAction";
 import { useDispatch,useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { addProductToCartAction } from "../../redux/actions/products/carts/cartsAction";
@@ -28,7 +28,7 @@ const Product = () => {
 
   // get products when router gets
   useEffect(() => {
-    dispatch(getSingleProductAction(Number(router.query.variant_id))) 
+    dispatch(getAll_SingleProductAction({variant_productId:Number(router.query.variant_id)})) 
     setShowingVarient(Number(router.query.variant_id)||1)
 
   },[router])
@@ -46,13 +46,10 @@ const Product = () => {
 
   // add to cart function
   const handleAddToCart = () => {
-    const productInfo = {
-        product_id : singleProduct[0]?.id,
-        variant_id : singleProduct[0]?.current_variant?.id
-    }
-
+ 
     if(!loading){
-      dispatch(addProductToCartAction('9',productInfo?.variant_id,productInfo?.product_id))
+      dispatch(addProductToCartAction({ product_id : singleProduct[0]?.id,
+        variant_id : singleProduct[0]?.current_variant?.id ,user_id:9}))
     }
   }
 

@@ -1,5 +1,5 @@
 import { CART_PRODUCT,CART_PRODUCT_LOADING,CART_PRODUCT_ERROR } from "../../../const/products/cartConst/cart"
-export const productReduce = (state = {loading:true,CartList:{},error:null},{type,payload}) => {
+export const cartReducer = (state = {loading:true,CartList:[],error:null},{type,payload}) => {
     switch(type){
         case CART_PRODUCT_LOADING:
             return {loading:true,CartList:[],error:null}
