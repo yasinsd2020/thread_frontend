@@ -4,8 +4,11 @@ import { VscClose } from "react-icons/vsc";
 import PlusMinusButton from "../plusMinusButton/plusMinusButton";
 import { useDispatch } from "react-redux";
 import { increamentCartAction, removeCartAction } from "../../../redux/actions/products/carts/cartsAction";
+import { useRouter } from "next/router";
+import { common_image_Baseurl } from "../../../public/globalExtention";
 
 const ProductInCart = ({ product }) => {
+  const router= useRouter()
   const dispatch =useDispatch()
   const handleRemveCart=()=>{
     dispatch(removeCartAction({
@@ -25,7 +28,12 @@ const ProductInCart = ({ product }) => {
   console.log("product?.qty",product);
   const [wantQuality, setWantQuality] = useState(Number(product?.qty));
   return (
-    <div className="border border-gray p-2 mb-2">
+    <div className="border border-gray p-2 mb-2"  onClick={()=> router.push({
+      pathname:`/product/info`,
+      query : {
+        variant_id : product?.product_variant?.id
+      }
+    })}>
       {/* section for lappy */}
       <div className="md:flex hidden flex-row">
         {/* product details */}
@@ -34,7 +42,7 @@ const ProductInCart = ({ product }) => {
           {/* image */}
           <div className="relative w-[80px] h-[100px]">
             <Image
-              src={`https://www.threadtreads.com/uploads/product/${product?.product?.featured_image}`}
+              src={`${common_image_Baseurl}${product?.product?.featured_image}`}
               layout="fill"
               className="relative w-full h-full object-cover"
             />
@@ -97,7 +105,7 @@ const ProductInCart = ({ product }) => {
           {/* image */}
           <div className="relative w-[80px] h-[140px]">
             <Image
-              src={`https://www.threadtreads.com/uploads/product/${product?.product?.featured_image}`}
+              src={`${common_image_Baseurl}${product?.product?.featured_image}`}
               layout="fill"
               className="relative w-full h-full object-cover"
             />

@@ -15,7 +15,7 @@ export default function LandingPage() {
         <CategoryCards/>
         <NewArivel />
         <AddBanner imgName={'https://seoulish.kr/cdn/shop/files/Frame_6_6a430396-c6f5-4b71-bbec-fa0129609e0a_1880x.png?v=1687163447'} />
-        <BestSaler />
+        {/* <BestSaler /> */}
         {/* <Footer /> */}
      </div>
   )

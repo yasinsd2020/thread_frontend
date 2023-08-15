@@ -11,6 +11,7 @@ import Image from "next/image";
 // import { TfiHeart } from "react-icons/tfi";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { common_image_Baseurl } from "../../../public/globalExtention";
 // const data = [
 //   {
 //     name: "GRAYCIOUS - Baseball Jacket",
@@ -138,7 +139,7 @@ const NormalCard = ({data}) => {
               <div key={index} className="md:p-2 mb-4 cursor-pointer">
                 <div className="h-[40vh] overflow-hidden md:h-[50vh] w-full relative  ">
                   <Image
-                    src={ ` https://www.threadtreads.com/uploads/product/${item.featured_image}`}
+                    src={ `${common_image_Baseurl}${item.featured_image}`}
                     layout="fill"
                     className="relative object-cover  hover:scale-110	 ease-in duration-500"
                   />
@@ -150,7 +151,7 @@ const NormalCard = ({data}) => {
                     </div>
                   </div>
                   <div className="text-center mb-2 text-sm">
-                    {item.name.length > 30
+                    {item.name?.length > 30
                       ? item.name.slice(0, 25) + "..."
                       : item.name}
                   </div>
