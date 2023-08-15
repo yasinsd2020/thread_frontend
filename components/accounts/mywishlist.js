@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { getWishListAction, removeWishListAction } from '../../redux/actions/products/wishlist/wishListAction'
+import { singleProduct_image_Baseurl } from '../../public/globalExtention'
 
 
 const MyWishlist = () => {
@@ -77,7 +78,7 @@ const MyWishlist = () => {
                         >
                             {/* image */}
                             <div className='relative w-full h-full flex-[85]'>
-                                <Image src={` https://www.threadtreads.com/uploads/product/variants/${item.product_variant.image_1}`} layout='fill' className='relative object-cover '/>
+                                <Image src={` ${singleProduct_image_Baseurl}${item.product_variant.image_1}`} layout='fill' className='relative object-cover '/>
                             </div>
                             {/* item details */}
                             <div className='relative w-full h-full flex-[15] p-2 flex-col justify-center items-center'>
