@@ -28,19 +28,21 @@ const ProductInCart = ({ product }) => {
   console.log("product?.qty",product);
   const [wantQuality, setWantQuality] = useState(Number(product?.qty));
   return (
-    <div className="border border-gray p-2 mb-2"  onClick={()=> router.push({
-      pathname:`/product/info`,
-      query : {
-        variant_id : product?.product_variant?.id
-      }
-    })}>
+    <div className="border border-gray p-2 mb-2" >
       {/* section for lappy */}
       <div className="md:flex hidden flex-row">
         {/* product details */}
         <div className="flex-[0.4] flex justify-start items-center gap-2">
       
           {/* image */}
-          <div className="relative w-[80px] h-[100px]">
+          <div className="relative w-[80px] h-[100px]"
+           onClick={()=> router.push({
+            pathname:`/product/info`,
+            query : {
+              variant_id : product?.product_variant?.id
+            }
+          })}
+          >
             <Image
               src={`${common_image_Baseurl}${product?.product?.featured_image}`}
               layout="fill"
