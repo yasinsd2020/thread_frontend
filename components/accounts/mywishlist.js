@@ -9,50 +9,24 @@ import { singleProduct_image_Baseurl } from '../../public/globalExtention'
 
 const MyWishlist = () => {
     const router =useRouter()
-    const {loading,WishProduct,refetch }=useSelector(state=>state.wishlist)
-    const add=useSelector(state=>state)
     const dispatch =useDispatch()
 
-    console.log(add,'WishProduct');
     // get all wish product
     useEffect(()=>{
-        if(router.query.tab ==="mywishlist"){
+        dispatch(getWishListAction(9))
+        // if(router.query.tab ==="mywishlist"){
 
-            dispatch(getWishListAction(9))
-        }
-    },[router])
+        // }
+    },[])
 
     const handleRemoveWishList =(wishlist_id)=>{
-        console.log('wishlist_id',wishlist_id);
         dispatch(removeWishListAction({wishlist_id}))
        
         
     }
 
-    // const products = [
-    //     {
-    //         prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/87/094/L_g0114309487.jpg",
-    //         prdName : "Wewewow - Mock Two-Piece Elbow-Sleeve T-Shirt",
-    //         prdPrice : "₹ 2,590.00"
-    //     },
-    //     {
-    //         prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/41/778/L_p0106677841.jpg",
-    //         prdName : "DuckleBeam - Reversible Plaid Zip Jacket",
-    //         prdPrice : "₹ 2,990.00"
-    //     },
-    //     {
-    //         prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/75/365/XXL_p0146436575.jpg",
-    //         prdName : "Posive - Hooded Cargo Jacket",
-    //         prdPrice : "₹ 2,990.00"
-    //     },
-    //     {
-    //         prdImage : "https://d1flfk77wl2xk4.cloudfront.net/Assets/80/222/XXL_p0145222280.jpg",
-    //         prdName : "Posive - Color Block Hooded Bomber Jacket",
-    //         prdPrice : "₹ 12,990.00"
-    //     }
-    // ]
-   
     
+    const {loading,WishProduct }=useSelector(state=>state.wishlist)
 
 
   return (
@@ -69,15 +43,15 @@ const MyWishlist = () => {
                 WishProduct.map((item,idx) => {
                     return (
                         <div key={idx} className='relative w-full h-[500px] bg-white shadow-md flex flex-col' 
-                        onClick={()=> router.push({
+                     
+                        >
+                            {/* image */}
+                            <div className='relative w-full h-full flex-[85]'    onClick={()=> router.push({
                             pathname:`/product/info`,
                             query : {
                               variant_id : item?.product_variant?.id
                             }
-                          })}
-                        >
-                            {/* image */}
-                            <div className='relative w-full h-full flex-[85]'>
+                          })}>
                                 <Image src={`${singleProduct_image_Baseurl}${item.product_variant.image_1}`} layout='fill' className='relative object-cover '/>
                             </div>
                             {/* item details */}
