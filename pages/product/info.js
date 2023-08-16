@@ -168,7 +168,7 @@ const Product = () => {
             {/* <div className="flex flex-col justify-start items-start font-thin gap-1 mb-2"><span className="text-[25px] font-semibold">{singleProduct[0]?.variants[showingVarient]?.final_amount} Rs.</span> <div className="text-xs"><del className="text-red-500">{singleProduct[0]?.variants[showingVarient]?.original_amount} Rs.</del> (20% OFF)</div></div> */}
             {/*  */}
             <div className="flex flex-col justify-center items-start font-thin "><span>Size ({selectedSize}) :
-              <div className="flex justify-start items-center gap-2 mt-2">
+              <div className="grid grid-cols-4	w-[100%]  gap-2 mt-2">
                 {
                   productDetails.sizes.map((size, idx) => {
                     return (
@@ -199,7 +199,7 @@ const Product = () => {
             </div>
             {/*  */}
             <div className="flex flex-row justify-start items-center ">
-              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-950		hover:bg-black hover:text-white border-[2px] bg-white'} text={'Add To Cart'} /></div>
+              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-900		hover:bg-black hover:text-white border-[2px] bg-white'} text={'Add To Cart'} /></div>
               <CommonButton 
               customClass={'ml-4'}
               text={'Buy Now'} />
