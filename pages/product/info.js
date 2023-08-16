@@ -105,15 +105,16 @@ const Product = () => {
         {/* product top section */}
         <div className="w-full md:h-[700px] h-auto  flex md:flex-row flex-col justify-start items-start gap-10">
           {/* product details left side */}
-          <div className="md:w-[45%] w-full md:h-full h-[400px] flex flex-row md:justify-start justify-start md:items-start items-start gap-2">
+       
+          <div className="  md:w-[45%] w-full h-[84%] flex flex-col-reverse md:flex-row gap-2 ">
             {/* side image */}
-            <div className="w-[15%] h-full overflow-auto hideScroll">
+            <div className="md:w-[18%] md:h-[300px]   flex md:flex-col flex-row justify-between  gap-2">
               {  productDetails?.images?.filter(e=>e!=='')?.map((image, idx) => {
-                console.log(image, 'yassssssssssssss');
+               
                 return (
                   <div
                     key={idx}
-                    className="relative w-full h-[150px] mb-2 cursor-pointer bg-red-50"
+                    className="relative md:w-[100%] md:h-[100%] border bg-gray-200 w-full h-[200px] mb-2"
                     onClick={() => setMainImage(image)}
                     onMouseEnter={() => setMainImage(image)}
                   >
@@ -127,7 +128,7 @@ const Product = () => {
               })}
             </div>
             {/* main image */}
-            <div className=" relative md:w-[85%] w-full md:h-full h-[400px] border">
+            <div className="relative border md:w-[85%] md:h-[100%] w-full h-[450px] bg-gray-200   ">
               <Image
                 src={`${singleProduct_image_Baseurl}${mainImage}`}
                 layout="fill"
@@ -197,9 +198,11 @@ const Product = () => {
               {productDetails.description?.length > 100 && <div><span className="cursor-pointer text-sm underline" onClick={() => setShowDescription(!showDescription)}>{showDescription ? "SHOW LESS" : "SHOW MORE"}</span></div>}
             </div>
             {/*  */}
-            <div className="flex flex-col md:flex-row justify-start items-center gap-1">
-              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-800	hover:bg-black hover:text-white border-[2px] bg-white'} text={'Add To Cart'} /></div>
-              <CommonButton text={'Buy Now'} />
+            <div className="flex flex-row justify-start items-center ">
+              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-950		hover:bg-black hover:text-white border-[2px] bg-white'} text={'Add To Cart'} /></div>
+              <CommonButton 
+              customClass={'ml-4'}
+              text={'Buy Now'} />
             </div>
           </div>
         </div>

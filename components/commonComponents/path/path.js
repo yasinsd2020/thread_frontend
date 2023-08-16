@@ -22,7 +22,7 @@ const Path = () => {
         }
     },[router])
   return (
-    <div className='capitalize px-4 py-10 '><Link href="/">Home</Link> {path}</div>
+    <div className='capitalize px-4 py-4 mb-4 border-b '><Link href="/">Home</Link> {path}</div>
   )
 }
 
