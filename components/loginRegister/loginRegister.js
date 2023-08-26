@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TfiClose } from 'react-icons/tfi';
 import Input from '../commonComponents/input/input'
 import CommonButton from '../commonComponents/button/commonButton'
-const loginRegister = ({ setLoginPopup, loginPopup }) => {
-    console.log("loginPopup", loginPopup);
+const loginRegister = ({ setAllValue,allValue,setLoginPopup, loginPopup }) => {
+
+const onChangeHandle=(e)=>{
+    setAllValue((prev)=>{return{...prev,[e.target.name]:e?.target?.value}})
+}
+console.log(allValue,'allValue');
     return (
         <>
             <div
@@ -18,7 +22,17 @@ const loginRegister = ({ setLoginPopup, loginPopup }) => {
                         </article>
                         <div
                             className="cursor-pointer hover:rotate-180 ease-linear duration-200"
-                            onClick={() => setLoginPopup((prev) => { return { ...prev, login: false } })}
+                            onClick={() =>{setLoginPopup((prev) => { return { ...prev, login: false } }),
+                            setAllValue(   {
+                                name:'',
+                                email:'',
+                                mobile:'',
+                                password:'',
+                                confirm_p:'',
+                                userName:'',
+                                log_p:''
+                            })
+                        }}
                         >
                             <TfiClose />
                             
@@ -27,12 +41,32 @@ const loginRegister = ({ setLoginPopup, loginPopup }) => {
 
                     <div className='flex justify-center gap-3 items-center w-full'>
                         <div className={`font-normal cursor-pointer text-lg ${loginPopup?.register ? 'text-gray-400	' : 'text-black'}`} onClick={() => {
-                            setLoginPopup((prev) => { return { ...prev, register: false } })
+                            setLoginPopup((prev) => { return { ...prev, register: false } }),
+                            setAllValue(   {
+                                name:'',
+                                email:'',
+                                mobile:'',
+                                password:'',
+                                confirm_p:'',
+                                userName:'',
+                                log_p:''
+                            })
+                        
                         }}
                         >Login</div>
                         <div className='text-lg font-semibold'>/</div>
                         <div className={`font-normal cursor-pointer text-lg ${loginPopup?.register ? 'text-black  ' : 'text-gray-400 	'}`} onClick={() => {
-                            setLoginPopup((prev) => { return { ...prev, register: true } })
+                            setLoginPopup((prev) => { return { ...prev, register: true } }),
+                            setAllValue(   {
+                                name:'',
+                                email:'',
+                                mobile:'',
+                                password:'',
+                                confirm_p:'',
+                                userName:'',
+                                log_p:''
+                            })
+                        
                         }}>SignUp</div>
 
                     </div>
@@ -40,16 +74,31 @@ const loginRegister = ({ setLoginPopup, loginPopup }) => {
                         <div>
                             {loginPopup?.register ?
                                 <div  className='flex flex-col gap-3'>
-                                    <Input customCss={'md:w-full border-black w-full'} placeholder="Name" type="text" />
-                                    <Input customCss={'md:w-full border-black w-full'} placeholder="Email" />
-                                    <Input customCss={'md:w-full border-black w-full'} placeholder="Mobile" />
-                                    <Input customCss={'md:w-full border-black w-full'} type={'password'} placeholder="Password" />
-                                    <Input customCss={'md:w-full border-black w-full'} type={'password'} placeholder="Confirm-Password" />
+                                    <Input customCss={'md:w-full border-black w-full'}
+                                    name='name'
+                                        onchange={(e)=>onChangeHandle(e)}
+                                    placeholder="Name" type="text" />
+                                    <Input customCss={'md:w-full border-black w-full'} 
+                                     onchange={(e)=>onChangeHandle(e)} name={'email'}
+                                    placeholder="Email" />
+                                    <Input customCss={'md:w-full border-black w-full'}
+                                    onchange={(e)=>onChangeHandle(e)} name={'mobile'}
+                                    placeholder="Mobile" />
+                                    <Input customCss={'md:w-full border-black w-full'} 
+                                    onchange={(e)=>onChangeHandle(e)} name={'password'}
+                                    type={'password'} placeholder="Password" />
+                                    <Input customCss={'md:w-full border-black w-full'}
+                                     onchange={(e)=>onChangeHandle(e)} name={'confirm_p'}
+                                    type={'password'} placeholder="Confirm-Password" />
                                 </div>
                                 :
                                 <div  className='flex flex-col gap-3'>
-                                    <Input customCss={'md:w-full border-black w-full'} placeholder="Username" />
-                                    <Input customCss={'md:w-full border-black w-full'} type={'password'} placeholder="Password" />
+                                    <Input customCss={'md:w-full border-black w-full'} 
+                                    name={'userName'}   onchange={(e)=>onChangeHandle(e)} 
+                                    placeholder="Username" />
+                                    <Input customCss={'md:w-full border-black w-full'}
+                                    name={'log_p'}   onchange={(e)=>onChangeHandle(e)} 
+                                    type={'password'} placeholder="Password" />
                                 </div>
                             }
 

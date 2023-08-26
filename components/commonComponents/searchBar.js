@@ -1,9 +1,11 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { TfiSearch,TfiClose } from "react-icons/tfi";
 
 
 
 const SearchBar = ({ openSearch, setOpenSearch }) => {
+  const router =useRouter()
   return (
     <div
       className={`fixed ${
@@ -17,7 +19,13 @@ const SearchBar = ({ openSearch, setOpenSearch }) => {
             type="text"
             placeholder="Search..."
             className="h-full w-full px-4 py-4 rounded-[30px] border outline-none"
-            onKeyDown={(e) => e.key === "Enter" && setOpenSearch(false)}
+           
+            onKeyDown={(e) => e.key === "Enter" &&   router?.push({
+              pathname:'/searchPage',
+              query:{
+                query_search:e.target.value
+              }
+            })}
           />
           <div
             className="absolute top-[50%] -translate-y-[50%] right-5 h-[100%] w-[40px] flex justify-center items-center cursor-pointer"

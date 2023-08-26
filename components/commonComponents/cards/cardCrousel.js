@@ -8,6 +8,9 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper";
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryListAction } from '../../../redux/actions/category/categoryListAction';
+import { useRouter } from 'next/router';
 const data = [{
   name: "Shirt",
   img: "https://d1flfk77wl2xk4.cloudfront.net/Assets/GalleryImage/92/096/L_g0179409692.jpg"
@@ -26,8 +29,12 @@ const data = [{
 ]
 const CardCrousel = () => {
   const [showArrows, setShowArrows] = useState(true);
-
+  const dispatch =useDispatch()
+  const router=useRouter()
+  const allCategoryList=useSelector(state=>state.categoryList.categoryList)
+  console.log(allCategoryList,'allCategoryList');
   useEffect(() => {
+    dispatch(getCategoryListAction({userId:9}))
       const handleResize = () => {
         setShowArrows(window.innerWidth >= 768);
       };
@@ -68,15 +75,21 @@ const CardCrousel = () => {
           modules={[Navigation,Autoplay]}
           className="mySwiper"
         >{
-            data.map((item, index) => {
+          allCategoryList.map((item, index) => {
               return (
                 <>
-                  <SwiperSlide><div className='md:h-[40vh] h-[20vh] w-full relative '><Image src={item.img} layout='fill'
+                  <SwiperSlide><div onClick={()=>router.push({
+                    pathname:'searchPage',
+                    query:{
+                      path:item.code,
+                      id:item?.id
+                    }
+                  })} className='md:h-[40vh] h-[20vh] w-full relative '><Image src={item.image} layout='fill'
                     className='relative object-cover ' />
                     <div className='absolute text-center h-[33vh] w-full bg-black-500 opacity-25	'>
                     </div>
                     <div className='absolute bottom-[25px] w-full text-center '>
-                      <span className="text-xs bg-zinc-900 text-white py-1 px-2 md:py-2 md:px-4">{item.name}</span>
+                      <span className="text-xs bg-zinc-900 text-white py-1 px-2 md:py-2 md:px-4">{item.code}</span>
                     </div>
                   </div>
                   </SwiperSlide>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, name, value, type, customCss,placeholder }) => {
+const Input = ({ label, name, value, type, customCss,placeholder,onchange }) => {
   return (
     <div>
       <article>{label}</article>
@@ -13,6 +13,7 @@ const Input = ({ label, name, value, type, customCss,placeholder }) => {
           name={name}
           placeholder={placeholder}
           defaultValue={value}
+          onChange={onchange}
         />
       </div>
     </div>

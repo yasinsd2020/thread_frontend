@@ -3,18 +3,18 @@ import { LOADING, TOSTIFY_ERROR, TOSTIFY_POP_UP, TOSTIFY_SUCCESS } from "../../.
 import {Wish_PRODUCT,Wish_PRODUCT_LOADING,Wish_PRODUCT_ERROR,WISH_PRODUCT_REFTECH} from '../../../const/products/wishList/wishListConst'
 
 // add wish-list action
-export const addWishListAction = (user_id,variant_id,product_id) => async (dispatch) => {
+export const addWishListAction = (product_info) => async (dispatch) => {
     try{
         dispatch({
             type : Wish_PRODUCT_LOADING,
             payload : true
         })
 
-        var product_info =  await {
-            user_id : '9' || user_id,
-            variant_id : variant_id,
-            product_id : product_id
-        } 
+        // var product_info =  await {
+        //     user_id : '9' || user_id,
+        //     variant_id : variant_id,
+        //     product_id : product_id
+        // } 
         const apiResponse = await addToWishListAPI(product_info)
     
         if(apiResponse){
@@ -39,7 +39,7 @@ export const addWishListAction = (user_id,variant_id,product_id) => async (dispa
 }
 
 // remove wish-list action
-export const removeWishListAction = ({wishlist_id}) => async (dispatch) => {
+export const  removeWishListAction = (product_info) => async (dispatch) => {
     try{
         dispatch({
             type : Wish_PRODUCT_LOADING,
@@ -47,12 +47,11 @@ export const removeWishListAction = ({wishlist_id}) => async (dispatch) => {
         })
 
         
-
-        var product_info =  await {
-            wishlist_id:wishlist_id.wishId,
-            user_id:wishlist_id.userId
-        } 
-        const apiResponse = await removeWishListAPI(product_info)
+        // var product_info =  await {
+        //     wishlist_id:wishlist_id.wishId,
+        //     user_id:wishlist_id.user_id
+        // } 
+        const apiResponse = await removeWishListAPI({user_id:product_info.user_id,wishlist_id:product_info.wishId})
     
         if(apiResponse){
          await   dispatch({

@@ -49,7 +49,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     // temporary user id waiting for token
-    dispatch(getAll_SingleProductAction({user_id:9})) 
+    // dispatch(getAll_SingleProductAction({user_id:9})) 
     window.addEventListener('scroll', () => {
       if(window.scrollY > 80){
         setMakeSortFixed(true)
@@ -80,13 +80,30 @@ const handleKeyPress=(e)=>{
   }
 
 }
-const handleCategory=(category_id)=>{
+const handleCategory=({id,code})=>{
   dispatch(getAll_SingleProductAction({
-    category_id:category_id
+    category_id:id
   })) 
+  router?.push({
+    pathname:'',
+    query:{
+        path:code
+    }
+  })
 }
+useEffect(()=>{
+  if(router?.query?.id !==undefined){
+    dispatch(getAll_SingleProductAction({
+      category_id:router?.query?.id
+    }))
+  }else if(router?.query.query_search !==undefined){
+    dispatch(getAll_SingleProductAction({
+      keyword:router.query.query_search
+    })) 
+  } 
+  },[router])
 const allProuct = useSelector((state)=>state.products)
-console.log('allProuct',allProuct);
+
 
   return (
     <>
@@ -98,13 +115,13 @@ console.log('allProuct',allProuct);
         >
           <div onClick={() => {
             setOpenBar(true)
-          }} className="flex  border justify-center gap-1 items-center w-[45%] py-2  border-gray">
+          }} className="flex  border justify-center gap-1 items-center w-[100%] py-2  border-gray">
             <VscListFilter className="md:text-2xl text-md font-semibold" />
             <div className="uppercase md:text-lg text-sm font-normal"> Refine By</div> </div>
-          <div className="border border-gray gap-1 w-[45%] py-2 items-center flex justify-center">
+          {/* <div className="border border-gray gap-1 w-[45%] py-2 items-center flex justify-center">
             <BiSort className="md:text-2xl text-md font-light " />
             <div className="uppercase font-normal text-sm md:text-lg"> Sort</div>
-          </div>
+          </div> */}
 
         </div>
 
@@ -126,7 +143,7 @@ console.log('allProuct',allProuct);
           >          
             <div className="flex pl-5 pr-7 py-3 relative items-center  gap-4 justify-between"
             >
-            <div className="text-md uppercase font-normal">Home / Hoddies</div>
+            <div className="text-md uppercase font-normal">{`Home / ${router?.query?.path ?router?.query?.path:'All' }`}</div>
             <div className="flex justify-between  w-[13vw]">
               <div className="flex items-center gap-5">
               <MdApps className={`text-[1.7rem] cursor-pointer hover:text-black ${gridShow?.viewThree?'text-black':'text-gray-400 '}`} onClick={()=> setGridShow((prev)=>{
@@ -142,10 +159,10 @@ console.log('allProuct',allProuct);
                 })}
                 />
               </div>
-              <div className=" gap-1 w-[5vw]   items-center flex justify-center">
+              {/* <div className=" gap-1 w-[5vw]   items-center flex justify-center">
                 <div className="uppercase font-normal text-sm lg:text-md cursor-pointer md:text-lg"> Sort</div>
                 <BiSort className="md:text-2xl text-sm font-light " />
-              </div>
+              </div> */}
             </div>
           </div>
           </div> }   

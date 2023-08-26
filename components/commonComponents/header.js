@@ -16,6 +16,17 @@ const Header = () => {
     login:false ,register:false
   })
   const [openBar, setOpenBar] = useState(false);
+  const [allValue,setAllValue] =useState(
+    {
+        name:'',
+        email:'',
+        mobile:'',
+        password:'',
+        confirm_p:'',
+        userName:'',
+        log_p:''
+    }
+)
   const [postion, setPosition] = useState("relative");
   const router = useRouter();
 
@@ -56,7 +67,7 @@ const Header = () => {
       {/* side bar */}
       <SideBar openBar={openBar} setOpenBar={setOpenBar} />
       {/* login and register */}
-      <LoginRegister setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
+      <LoginRegister setAllValue={setAllValue} allValue={allValue} setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
       {/* header */}
       <div
         className={`${postion} top-0 left-0 w-full ${

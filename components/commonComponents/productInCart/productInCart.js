@@ -25,7 +25,6 @@ const ProductInCart = ({ product }) => {
       product_id: product?.product_id,
       variant_id: product?.product_variant?.id}))
   }
-  console.log("product?.qty",product);
   const [wantQuality, setWantQuality] = useState(Number(product?.qty));
   return (
     <div className="border border-gray p-2 mb-2" >
@@ -52,9 +51,9 @@ const ProductInCart = ({ product }) => {
           {/* Info */}
           <div className="flex flex-col text-sm gap-1 uppercase">
             <article>
-              {product.product.name.length > 25
-                ? `${product.product.name.slice(0, 25)}...`
-                : product.product.name}
+              {product?.product?.name?.length > 25
+                ? `${product?.product?.name?.slice(0, 25)}...`
+                : product?.product?.name}
             </article>
             <div className="flex"> <div className="mr-3">Size :  </div>  
                        <article>{product?.product_variant?.size}</article>
@@ -118,9 +117,9 @@ const ProductInCart = ({ product }) => {
           {/* name */}
           <div className="flex flex-col text-sm uppercase mb-2 ">
             <article>
-              {product.product.name.length > 20
+              {product && product?.product?.name.length > 20
                 ? `${product.product.name.slice(0, 20)}...`
-                : product.product.name}
+                : product.product?.name}
             </article>
             <article className="text-xs">-{product.prdSize}</article>
           </div>
