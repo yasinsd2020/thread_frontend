@@ -25,14 +25,7 @@ export const addProductToCartAction = ({user_id,variant_id,product_id}) => async
                     message : 'Product added to your cart successfully.'
                 }
             })
-            const product_info=await {
-                user_id:9 || user_id
-             }
-             const getCartReponse = await getAllCartProductAPI(product_info)
-             dispatch({
-                type:CART_PRODUCT,
-                payload:getCartReponse.data.cart
-             })
+           
         }
 
     }catch(err){

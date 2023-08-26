@@ -7,44 +7,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoryListAction } from '../../../redux/actions/category/categoryListAction';
 
-const links = [
-    {
-        name: "T-shirts & Polos",
-        href: "/",
-    },
-    {
-        name: "Shirts",
-        href: "/",
-    },
-    {
-        name: "Hoodies & Sweatshirts",
-        href: "/",
-    },
-    {
-        name: "Sweaters & Cardigans",
-        href: "/",
-    },
-    {
-        name: "Jackets & Coats",
-        href: "/",
-    },
-    {
-        name: "Pants",
-        href: "/",
-    },
-    {
-        name: "Suits & Blazers",
-        href: "/",
-    },
-    {
-        name: "Activewear",
-        href: "/",
-    },
-    {
-        name: "Swimwear",
-        href: "/",
-    },
-];
 const CategorySideBar = ({ handleCategory, handleKeyPress, setSearchProd, openBar, searchProd, setOpenBar, setSliderValue, setIsFixed, setCategoryShow, isFixed, categoryShow, sliderValue }) => {
     useEffect(() => {
         const handleScroll = () => {
@@ -110,7 +72,8 @@ const CategorySideBar = ({ handleCategory, handleKeyPress, setSearchProd, openBa
                             {allCategory.map((link, idx) => {
                                 return (
                                     <div key={idx} className="w-full py-1.5 cursor-pointer">
-                                        <div className="font-extralight text-gray-600 text-md " onClick={() => { handleCategory(link.id) }}>{link.code}</div>
+                                        <div className="font-extralight text-gray-600 text-md " onClick={() => {
+                                             handleCategory({id:link.id,code:link.code}) }}>{link.code}</div>
                                     </div>
                                 );
                             })}

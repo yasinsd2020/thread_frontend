@@ -10,7 +10,7 @@ import { getList_NewArivelAction, getAll_SingleProductAction } from "../../redux
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { addProductToCartAction } from "../../redux/actions/products/carts/cartsAction";
-import { addWishListAction } from "../../redux/actions/products/wishlist/wishListAction";
+import { addWishListAction, removeWishListAction } from "../../redux/actions/products/wishlist/wishListAction";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import { singleProduct_image_Baseurl } from "../../public/globalExtention";
 
@@ -18,7 +18,11 @@ const Product = () => {
 
 
   const tReview = [true, true, true, true, true]
-  const [addToWislist, setAddToWislist] = useState(false)
+  const [addToWislist, setAddToWislist] = useState()
+  const [addToCart,setAddToCart] =useState({
+    cart:false,
+    cartLoader:false
+  })
   const [wantQuality, setWantQuality] = useState(1)
   const [showDescription, setShowDescription] = useState(false)
   const [showingVarient, setShowingVarient] = useState(1)
@@ -29,7 +33,7 @@ const Product = () => {
 
   // get products when router gets
   useEffect(() => {
-    dispatch(getAll_SingleProductAction({ variant_productId: Number(router.query.variant_id) }))
+    dispatch(getAll_SingleProductAction({ variant_productId: Number(router.query.variant_id),user_id:9 }))
     setShowingVarient(Number(router.query.variant_id) || 1)
 
   }, [router])
@@ -42,40 +46,53 @@ const Product = () => {
   // useEffect when we get some response from api
   useEffect(() => {
     setMainImage((singleProduct[0]?.variants?.map(item => item?.image_1))?.toString())
+    setAddToWislist(singleProduct[0]?.variants[0]?.is_wishlisted)
+    setAddToCart({cart:singleProduct[0]?.variants[0]?.is_carted,cartLoader:false})
   }, [singleProduct])
 
   // add to cart function
   const handleAddToCart = () => {
 
-    if (!loading) {
+    if (!addToCart.cart) {
       dispatch(addProductToCartAction({
         product_id: singleProduct[0]?.id,
         variant_id: singleProduct[0]?.current_variant?.id, user_id: 9
       }))
+      setAddToCart({cart:true,
+      cartLoader:setTimeout(()=>{
+      setAddToCart({cart:true,cartLoader:false})
+      },3000)
+      })
+      
+    }else{
+    
+      router.push('/cart')
     }
   }
+  console.log("addToCart.cartLoader",addToCart.cartLoader);
 
   // add to wishList function
   const handleAddWishList = () => {
     const productInfo = {
       product_id: singleProduct[0]?.id,
-      variant_id: singleProduct[0]?.current_variant?.id
+      variant_id: singleProduct[0]?.current_variant?.id,
+      user_id:'9',
+      wishId:singleProduct[0]?.variants[0]?.wishlist?.id
+
     }
 
-    if (!loading) {
-
-      dispatch(addWishListAction('9', productInfo?.variant_id, productInfo?.product_id))
+    if (addToWislist == false) {
+      dispatch(addWishListAction(productInfo))
+      setAddToWislist(true)
+    }else{
+      dispatch(removeWishListAction(productInfo))
+      setAddToWislist(false)
     }
 
 
-    setAddToWislist(!addToWislist)
 
   }
-  //   const handleRemoveWishList =(wishlist_id)=>{
-  //     dispatch(removeWishListAction(wishlist_id))
 
-
-  // }
 
   const productDetails = {
     name: "Andrei - Long-Sleeve Two Tone Oversized Shirt",
@@ -90,14 +107,13 @@ const Product = () => {
       ,
       (singleProduct[0]?.variants?.map(item => item?.image_4))?.toString()    
     ],
-    reviews: 2,
-    colors: ["Red", "Blue", "Green"],
-    sizes: ["S", "M", "L", "XL", "XXL", "XXLL"],
+    colors: [singleProduct[0]?.variants[0].color],
+    sizes: [singleProduct[0]?.variants[0].size],
     // You can add more properties as needed
   };
   const [selectedSize, setSelectedSize] = useState(productDetails.sizes[0])
 
-  console.log('singleSelector',singleProduct[0])
+
   return (
     <>
       <Path />
@@ -114,7 +130,7 @@ const Product = () => {
                 return (
                   <div
                     key={idx}
-                    className="relative md:w-[100%] md:h-[100%] border bg-gray-200 w-full h-[200px] mb-2"
+                    className={`relative md:w-[100%] border-4 ${mainImage==image ? 'border-black':'border-white' }  md:h-[100%] border bg-gray-200 w-full h-[200px] mb-2`}
                     onClick={() => setMainImage(image)}
                     onMouseEnter={() => setMainImage(image)}
                   >
@@ -159,8 +175,8 @@ const Product = () => {
             </div> */}
             {/*  */}
             <div className="flex items-center mb-5 ">
-              <div className="mr-3">Add To WishList :</div>
-              <article className="underline cursor-pointer font-thin  uppercase" onClick={() => handleAddWishList()}>{!addToWislist ? <AiOutlineHeart className="text-2xl" /> : <AiFillHeart className='text-red-500 text-2xl' />
+              <div className="mr-3">{addToWislist ? 'Added To WishList' :'Add To WishList' }:</div>
+              <article className="underline cursor-pointer font-thin  uppercase" onClick={() => handleAddWishList()}>{addToWislist ?    <AiFillHeart className='text-red-500 text-2xl' /> : <AiOutlineHeart className="text-2xl" />
               }</article>
             </div>
 
@@ -182,7 +198,11 @@ const Product = () => {
             </span>
             </div>
             {/*  */}
-            <div className="flex flex-col justify-start items-start font-thin my-5">
+            <div className="my-2">
+              <div>Colors: </div>
+              <div>{productDetails.colors}</div>
+            </div>
+            <div className="flex flex-col justify-start items-start font-thin mb-4">
               <span>Quantity : </span>
               <PlusMinusButton wantQuality={wantQuality} setWantQuality={setWantQuality} />
             </div>
@@ -199,8 +219,8 @@ const Product = () => {
             </div>
             {/*  */}
             <div className="flex flex-row justify-start items-center ">
-              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-900		hover:bg-black hover:text-white border-[2px] bg-white'} text={'Add To Cart'} /></div>
-              <CommonButton 
+              <div className="cursor-pointer" onClick={() => handleAddToCart()}><CommonButton customClass={'text-slate-900		hover:bg-black hover:text-white border-[2px] bg-black'} text={addToCart.cart ? addToCart.cartLoader?'Loading...':'Go To Cart':'Add To Cart'} /></div>
+              <CommonButton  onClick={()=>{router.push('/checkOutPage')}}
               customClass={'ml-4'}
               text={'Buy Now'} />
             </div>

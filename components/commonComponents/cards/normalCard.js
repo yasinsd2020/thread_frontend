@@ -125,7 +125,7 @@ const NormalCard = ({data}) => {
   return (
     <>
       {data?.map((item, index) => {
-        console.log("ddd",item.variants?.map(e=>e.id));
+        console.log("ddd",item.variants);
         return (
           <div key={index}   onClick={() => {
             router.push({
@@ -155,12 +155,12 @@ const NormalCard = ({data}) => {
                       ? item.name.slice(0, 25) + "..."
                       : item.name}
                   </div>
-                  <div className="flex justify-between flex-col items-center">
+                  <div className="flex gap-3 justify-center  flex-row items-center">
                       <div className="flex justify-center items-center mb-1 ">
-                        <del className="mr-2"><div className="font-normal text-xs">&#8377;{item?.variants[0]?.original_amount}</div></del>
-                        <div className="text-red-500">20% OFF</div>
+                        <del className="mr-2"><div className="font-normal text-red-600">&#8377;{item?.variants[0]?.original_amount}</div></del>
+                        
                       </div>
-                      <div className="font-semibold text-lg">&#8377;{item?.variants[0]?.final_amount}</div>
+                      <div className="font-semibold text-lg text-green-800">&#8377;{item?.variants[0]?.final_amount}</div>
                   </div>
                 </div>
               </div>

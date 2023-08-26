@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductInCart from '../commonComponents/productInCart/productInCart'
-const checkOutLeft = () => {
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartAction } from '../../redux/actions/products/carts/cartsAction';
+const CheckOutLeft = () => {
+  const dispatch =useDispatch();
+  useEffect(()=>{
+    dispatch(getCartAction(9))
+  },[])
+const {cartReducer} =useSelector(state=>state)
   return (
     <>
     <div className="w-full h-auto">
@@ -22,7 +29,7 @@ const checkOutLeft = () => {
       {/* product list section  */}
       <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
         {
-            InCart?.map((cartPrd,idx) => {
+             cartReducer?.CartList?.map((cartPrd,idx) => {
                 return (
                     <ProductInCart key={idx} product={cartPrd} />
                 )
@@ -36,7 +43,7 @@ const checkOutLeft = () => {
     )
 }
 
-export default checkOutLeft
+export default CheckOutLeft
 
 const InCart = [
   {

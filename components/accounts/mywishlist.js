@@ -20,7 +20,7 @@ const MyWishlist = () => {
     },[])
 
     const handleRemoveWishList =(wishlist_id)=>{
-        dispatch(removeWishListAction({wishlist_id}))
+        dispatch(removeWishListAction(wishlist_id))
        
         
     }
@@ -41,6 +41,7 @@ const MyWishlist = () => {
       <div className='w-full h-auto grid md:grid-cols-3 grid-cols-1 gap-5'>
             {
                 WishProduct.map((item,idx) => {
+                    console.log(WishProduct,'WishProduct');
                     return (
                         <div key={idx} className='relative w-full h-[500px] bg-white shadow-md flex flex-col' 
                      
@@ -67,7 +68,7 @@ const MyWishlist = () => {
                                 </div>
                                 <article className='text-center text-xs cursor-pointer hover:text-red-400 underline'
                                 onClick={()=>{
-                                    handleRemoveWishList({wishId:item.id,userId:item.user_id})
+                                    handleRemoveWishList({wishId:item.id,user_id:item.user_id})
                                 }}
                                 >REMOVE</article>
                                 </div>   
