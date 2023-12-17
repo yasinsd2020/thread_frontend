@@ -23,12 +23,12 @@ const {cartReducer} =useSelector(state=>state)
           Quantity
         </div>
         <div className="flex-[0.2]  flex justify-center items-center">
-          Sub Total
+          Remove
         </div>
       </div>
       {/* product list section  */}
       <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
-        {
+        { cartReducer?.CartList?.length <= 0 ? <div className='text-center text-sm md:mt-[10%] font-[300] md:text-lg md:font-bold '>Your Cart is Empty </div> : 
              cartReducer?.CartList?.map((cartPrd,idx) => {
                 return (
                     <ProductInCart key={idx} product={cartPrd} />

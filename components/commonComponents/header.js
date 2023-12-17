@@ -18,7 +18,8 @@ const Header = () => {
   const [openBar, setOpenBar] = useState(false);
   const [allValue,setAllValue] =useState(
     {
-        name:'',
+      first_name:'',
+      last_name:'',
         email:'',
         mobile:'',
         password:'',

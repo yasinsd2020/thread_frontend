@@ -1,5 +1,5 @@
 import axios from 'axios';
-// const user_token = localStorage.getItem(localStorage.getItem('t&tUsertoken'))
+// const user_token = localStorage.getItem('t&tUsertoken')
 
 // backend based url
 const api = axios.create({baseURL : `${process.env.baseBackendUrl}/api`});

@@ -1,17 +1,8 @@
 import React, { useEffect } from "react";
 import ProductInCart from "../commonComponents/productInCart/productInCart";
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { getCartAction } from "../../redux/actions/products/carts/cartsAction";
 
-const LeftSection = () => {
 
-  const router = useRouter();
-  const dispatch =useDispatch();
-  useEffect(()=>{
-    dispatch(getCartAction(9))
-  },[router])
-const {cartReducer} =useSelector(state=>state)
+const LeftSection = ({cartReducer}) => {
 
 
   return (
@@ -33,7 +24,7 @@ const {cartReducer} =useSelector(state=>state)
       </div>
       {/* product list section  */}
       <div className="w-full md:h-[50vh] h-auto max-h-[50vh] flex-col border-y-2 border-gray justify-start items-center overflow-auto hideScroll py-4 ">
-        {
+        {cartReducer?.CartList?.length <= 0 ? <div className='text-center text-sm md:mt-[10%] font-[300] md:text-lg md:font-bold '>Your Cart is Empty </div> :
             cartReducer?.CartList?.map((cartPrd) => {
                 return (
                     <ProductInCart key={cartPrd?.id} product={cartPrd} />

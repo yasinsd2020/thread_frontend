@@ -3,7 +3,7 @@ import CommnonButton from "../commonComponents/button/commonButton";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 
-const rightSection = () => {
+const rightSection = ({disabledValue}) => {
   // const Router =useRouter();
   // const proccedCheckFun =()=>{
   //   Router.push('./checkOutPage')
@@ -47,10 +47,10 @@ const rightSection = () => {
           <article className="text-xl">₹1,148.00</article>
         </div>
         {/* Button */}
-        <div className="absolute bottom-0 left-0 w-full cursor-pointer "   
+        <div className={`absolute bottom-0 left-0 w-full cursor-pointer bg-red-200 ${disabledValue <= 0 && 'pointer-events-none'}`}
           // onClick={()=>{proccedCheckFun()}}
         ><Link href='./checkOutPage'>
-          <CommnonButton  text={"Procced To Checkout"} customClass={`!uppercase w-full text-red-500 text-sm`} />
+          <CommnonButton  text={"Procced To Checkout"} customClass={` !uppercase  bg-black !w-full text-red-500 text-sm`} />
           </Link>
         </div>
       </div>

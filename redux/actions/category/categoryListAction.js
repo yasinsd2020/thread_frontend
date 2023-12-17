@@ -13,7 +13,6 @@ export const   getCategoryListAction =()=>async(dispatch)=>{
          }
 
          const response = await getCategoryListApi()
-            console.log(response,'response');
         dispatch({
             type:CATEGORY_LIST,
             payload:response?.data?.categories

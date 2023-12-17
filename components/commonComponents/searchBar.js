@@ -19,7 +19,7 @@ const SearchBar = ({ openSearch, setOpenSearch }) => {
             type="text"
             placeholder="Search..."
             className="h-full w-full px-4 py-4 rounded-[30px] border outline-none"
-           
+            inputMode="search"           
             onKeyDown={(e) => e.key === "Enter" &&   router?.push({
               pathname:'/searchPage',
               query:{
@@ -29,11 +29,16 @@ const SearchBar = ({ openSearch, setOpenSearch }) => {
           />
           <div
             className="absolute top-[50%] -translate-y-[50%] right-5 h-[100%] w-[40px] flex justify-center items-center cursor-pointer"
-            onClick={() => {
-              setOpenSearch(false);
-            }}
+           
           >
-            <TfiSearch className="text-xl" />
+            <TfiSearch
+            onClick={(e)=> router?.push({
+              pathname:'/searchPage',
+              query:{
+                query_search:e.target.value
+              }
+            })}
+            className="text-xl" />
           </div>
         </div>
           <div

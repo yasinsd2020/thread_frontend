@@ -104,7 +104,14 @@ const ProductInCart = ({ product }) => {
         {/* product details */}
         <div className="flex-[0.2] w-full flex justify-start items-center ">
           {/* image */}
-          <div className="relative w-[80px] h-[140px]">
+          <div className="relative w-[80px] h-[140px]"
+            onClick={()=> router.push({
+              pathname:`/product/info`,
+              query : {
+                variant_id : product?.product_variant?.id
+              }
+            })}
+          >
             <Image
               src={`${common_image_Baseurl}${product?.product?.featured_image}`}
               layout="fill"
@@ -138,7 +145,9 @@ const ProductInCart = ({ product }) => {
               Quantity:
             </article>
             <PlusMinusButton
+              handleIncreamentCart={handleIncreamentCart}
               wantQuality={wantQuality}
+              handleRemveCart={handleRemveCart}
               setWantQuality={setWantQuality}
               customClass={`!w-max-[20px] h-[20px] !border-[0.5px]`}
             />
