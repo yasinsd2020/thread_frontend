@@ -18,4 +18,4 @@ export const removeWishListAPI  = (product_info) => api.post('/order/remove_from
 export const getCategoryListApi =()=>api.post('/product/category')
 
 // login an Register
-export const registrationApi =()=>api.post('/api/auth/registration',login_requst_info)
+export const registrationApi =(login_requst_info)=>api.post('/auth/registration',login_requst_info)

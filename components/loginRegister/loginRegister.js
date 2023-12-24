@@ -5,7 +5,7 @@ import CommonButton from '../commonComponents/button/commonButton'
 import { useDispatch } from 'react-redux';
 import { registrationAction } from '../../redux/actions/authentications/login-register';
 const loginRegister = ({ setAllValue,allValue,setLoginPopup, loginPopup }) => {
-    
+
     const dispatch=useDispatch()
 const onChangeHandle=(e)=>{
     setAllValue((prev)=>{return{...prev,[e.target.name]:e?.target?.value}})
@@ -18,9 +18,9 @@ const submitFun=()=>{
         mobile:allValue.mobile,
         password:allValue.password,}
      dispatch(registrationAction(login_requst_info))
-}
-console.log(allValue,'allValue');
-    return (
+    }
+    // console.log(allValue,'allValue');
+return (
         <>
             <div
                 className={`fixed ${loginPopup?.login ? "right-0" : "-right-[100%]"
