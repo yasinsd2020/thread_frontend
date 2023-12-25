@@ -19,3 +19,7 @@ export const getCategoryListApi =()=>api.post('/product/category')
 
 // login an Register
 export const registrationApi =(login_requst_info)=>api.post('/auth/registration',login_requst_info)
+export const loginApi = (login_requst_info) => api.post('/auth/login',login_requst_info)
+
+// get oders
+export const myOrdersApi = (request) => api.post('/order',request) 

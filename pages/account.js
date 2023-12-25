@@ -12,6 +12,7 @@ import Profile from "../components/accounts/profile";
 import ChangePassword from "../components/accounts/changePassword";
 import MyWishlist from "../components/accounts/mywishlist";
 import Link from "next/link";
+import MyOrders from "../components/accounts/myOrders";
 
 const Account = () => {
   const tabs = [
@@ -70,7 +71,7 @@ const Account = () => {
       case "changepassword":
         return <ChangePassword />;
       case "myorders":
-        return "myorders";
+        return <MyOrders />;
       case "mywishlist":
         return <MyWishlist />;
     default :
